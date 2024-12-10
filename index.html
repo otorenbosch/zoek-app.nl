@@ -36,13 +36,22 @@
             overflow: hidden;
         }
 
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 2rem;  /* Verminderd van 6rem naar 3rem */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
         .hero::after {
             content: '';
             position: absolute;
             bottom: -50%;
             left: -10%;
             right: -10%;
-            height: 100%;
+            height: 70%;  /* Verminderd van 100% naar 70% */
             background: white;
             transform: rotate(-3deg);
             z-index: 1;
@@ -53,15 +62,20 @@
             margin-bottom: 1rem;
             position: relative;
             z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Toegevoegd voor betere leesbaarheid */
         }
 
         .hero p {
             font-size: 1.5rem;
             opacity: 0.9;
             max-width: 800px;
-            margin: 0 auto;
+            margin: 0 auto 2rem auto; /* Toegevoegd margin-bottom */
             position: relative;
             z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Toegevoegd voor betere leesbaarheid */
+            background: rgba(0,0,0,0.1); /* Lichte achtergrond voor betere leesbaarheid */
+            padding: 0.5rem;
+            border-radius: 4px;
         }
 
         .container {
