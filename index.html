@@ -29,9 +29,12 @@
 
         .hero {
             background: url('./images/feature-image-zoekapp.png');
-            background-size: cover;
+            background-size: contain;
             background-position: center;
-            height: 600px;
+            background-repeat: no-repeat;
+            height: 150px;  /* of experimenteer met andere hoogtes */
+            max-width: 800px;  /* beperkt de maximale breedte */
+            margin: 0 auto;  /* centreert de hero sectie */
             position: relative;
         }
         
