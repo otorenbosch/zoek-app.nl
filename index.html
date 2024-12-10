@@ -28,52 +28,46 @@
         }
 
         .hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(rgba(33, 150, 243, 0.9), rgba(25, 118, 210, 0.9)), 
+                        url('./images/feature-image-zoekapp.png');
+            background-size: cover;
+            background-position: center;
             color: white;
-            padding: 6rem 2rem;
+            padding: 3rem 2rem;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
-
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 3rem 2rem;  /* Verminderd van 6rem naar 3rem */
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::after {
+        
+        /* We kunnen deze ::after pseudo-element verwijderen omdat we nu de achtergrondafbeelding gebruiken */
+        /* .hero::after {
             content: '';
             position: absolute;
             bottom: -50%;
             left: -10%;
             right: -10%;
-            height: 70%;  /* Verminderd van 100% naar 70% */
+            height: 70%;
             background: white;
             transform: rotate(-3deg);
             z-index: 1;
-        }
-
+        } */
+        
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             position: relative;
             z-index: 2;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Toegevoegd voor betere leesbaarheid */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
-
+        
         .hero p {
             font-size: 1.5rem;
             opacity: 0.9;
             max-width: 800px;
-            margin: 0 auto 2rem auto; /* Toegevoegd margin-bottom */
+            margin: 0 auto 2rem auto;
             position: relative;
             z-index: 2;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Toegevoegd voor betere leesbaarheid */
-            background: rgba(0,0,0,0.1); /* Lichte achtergrond voor betere leesbaarheid */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
             padding: 0.5rem;
             border-radius: 4px;
         }
