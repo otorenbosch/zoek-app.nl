@@ -3,183 +3,384 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zoekapp - Metaaldetector Vondsten App</title>
+    <meta name="description" content="Zoekapp - De complete app voor het registreren en beheren van je metaaldetector vondsten. Eenvoudig vondsten vastleggen, delen en aanmelden bij officiële instanties.">
+    <title>Zoekapp - Metaaldetector Vondsten Registratie</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --primary-color: #2196F3;
+            --secondary-color: #1976D2;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --spacing: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: #333;
+            color: var(--text-color);
         }
-        
-        header {
-            background-color: #2196F3;
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
+            padding: 6rem 2rem;
             text-align: center;
-            padding: 4rem 1rem;
+            position: relative;
+            overflow: hidden;
         }
-        
-        h1 {
-            margin: 0;
-            font-size: 2.5rem;
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -50%;
+            left: -10%;
+            right: -10%;
+            height: 100%;
+            background: white;
+            transform: rotate(-3deg);
+            z-index: 1;
         }
-        
-        .subtitle {
-            font-size: 1.2rem;
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
             opacity: 0.9;
-            margin-top: 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 2rem;
         }
-        
+
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .feature {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .feature-icon {
-            font-size: 2rem;
-            color: #2196F3;
-            margin-bottom: 1rem;
-        }
-        
-        .feature h3 {
-            margin: 0 0 1rem 0;
-            color: #1976D2;
-        }
-        
-        .screenshots {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        
-        .screenshot {
-            background: #f5f5f5;
-            padding: 1rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-        
-        .screenshot img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-        }
-        
-        .cta {
-            text-align: center;
             margin: 4rem 0;
         }
-        
+
+        .feature {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        .screenshots {
+            background: var(--light-gray);
+            padding: 4rem 0;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .screenshot {
+            background: white;
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .screenshot img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot:hover img {
+            transform: scale(1.05);
+        }
+
+        .cta {
+            text-align: center;
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            margin-top: 4rem;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
         .cta-button {
             display: inline-block;
-            background: #2196F3;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 4px;
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            transition: background-color 0.3s;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+            margin-top: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-        
+
         .cta-button:hover {
-            background: #1976D2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
         }
-        
+
+        .benefits {
+            padding: 4rem 0;
+            background: white;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .benefit i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-right: 1.5rem;
+            padding-top: 0.25rem;
+        }
+
+        .benefit-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+
         footer {
-            background: #f5f5f5;
-            text-align: center;
-            padding: 2rem;
+            background: var(--text-color);
+            color: white;
+            padding: 3rem 0;
             margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .benefit {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .benefit i {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
+    <section class="hero">
         <h1>Zoekapp</h1>
-        <div class="subtitle">Registreer en beheer al je metaaldetector vondsten</div>
-    </header>
+        <p>De beste manier om je metaaldetector vondsten te registreren, beheren en delen</p>
+    </section>
 
-    <main class="container">
+    <section class="container">
         <div class="features">
             <div class="feature">
-                <div class="feature-icon">📝</div>
-                <h3>Eenvoudig Registreren</h3>
-                <p>Leg al je vondsten vast met foto's, datum, locatie en details. Categoriseer je vondsten per periode en type.</p>
-            </div>
-            
-            <div class="feature">
-                <div class="feature-icon">🗺️</div>
+                <i class="fas fa-map-marked-alt feature-icon"></i>
                 <h3>Interactieve Kaart</h3>
-                <p>Bekijk al je vondsten op een overzichtelijke kaart. Filter op periode en navigeer eenvoudig terug naar vindplaatsen.</p>
+                <p>Bekijk al je vondsten op een overzichtelijke kaart. Filter op periode en navigeer eenvoudig terug naar vindplaatsen. Perfect voor het bijhouden van je zoeklocaties.</p>
             </div>
             
             <div class="feature">
-                <div class="feature-icon">📱</div>
-                <h3>Altijd bij de Hand</h3>
-                <p>Offline beschikbaar en gebruiksvriendelijk. Maak foto's direct vanuit de app en deel je vondsten met anderen.</p>
+                <i class="fas fa-camera feature-icon"></i>
+                <h3>Foto's & Details</h3>
+                <p>Leg elke vondst vast met hoogwaardige foto's en uitgebreide details. Categoriseer op periode, type en locatie voor een complete documentatie van je collectie.</p>
             </div>
             
             <div class="feature">
-                <div class="feature-icon">🔄</div>
-                <h3>Backup & Synchronisatie</h3>
-                <p>Maak eenvoudig een backup van al je vondsten en zet deze terug wanneer nodig.</p>
-            </div>
-            
-            <div class="feature">
-                <div class="feature-icon">📸</div>
-                <h3>Fotogalerij</h3>
-                <p>Bekijk al je vondsten in een overzichtelijke galerij. Markeer je favoriete vondsten en zoom in op details.</p>
-            </div>
-            
-            <div class="feature">
-                <div class="feature-icon">📨</div>
-                <h3>Officiële Meldingen</h3>
-                <p>Meld je vondsten eenvoudig aan bij PAN, Numis of Archis direct vanuit de app.</p>
+                <i class="fas fa-share-alt feature-icon"></i>
+                <h3>Eenvoudig Delen</h3>
+                <p>Deel je mooiste vondsten direct met andere enthousiastelingen. Met één druk op de knop deel je foto's en details met vrienden of op sociale media.</p>
             </div>
         </div>
+    </section>
 
-        <div class="screenshots">
-            <div class="screenshot">
-                <img src="/api/placeholder/300/500" alt="Vondst invoeren scherm">
-                <p>Vondsten invoeren</p>
-            </div>
-            <div class="screenshot">
-                <img src="/api/placeholder/300/500" alt="Vondstenkaart scherm">
-                <p>Vondstenkaart</p>
-            </div>
-            <div class="screenshot">
-                <img src="/api/placeholder/300/500" alt="Galerij scherm">
-                <p>Fotogalerij</p>
+    <section class="screenshots">
+        <div class="container">
+            <h2>App Impressie</h2>
+            <div class="screenshot-grid">
+                <div class="screenshot">
+                    <img src="/api/placeholder/300/600" alt="Vondst invoeren scherm">
+                    <p>Eenvoudig vondsten registreren</p>
+                </div>
+                <div class="screenshot">
+                    <img src="/api/placeholder/300/600" alt="Vondstenkaart scherm">
+                    <p>Overzichtelijke vondstenkaart</p>
+                </div>
+                <div class="screenshot">
+                    <img src="/api/placeholder/300/600" alt="Galerij scherm">
+                    <p>Uitgebreide fotogalerij</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="cta">
-            <h2>Download de App</h2>
-            <p>Beschikbaar voor Android</p>
-            <a href="#" class="cta-button">Download op Google Play</a>
+    <section class="benefits container">
+        <h2>Waarom Zoekapp?</h2>
+        <div class="benefit">
+            <i class="fas fa-check-circle"></i>
+            <div class="benefit-content">
+                <h3>Gebruiksvriendelijk</h3>
+                <p>Ontworpen met de gebruiker in gedachten. Geen ingewikkelde menu's of lastige procedures, gewoon direct aan de slag met het registreren van je vondsten.</p>
+            </div>
         </div>
-    </main>
+        
+        <div class="benefit">
+            <i class="fas fa-shield-alt"></i>
+            <div class="benefit-content">
+                <h3>Veilig & Privé</h3>
+                <p>Al je gegevens worden lokaal op je telefoon opgeslagen. Maak eenvoudig back-ups en bepaal zelf wat je wilt delen.</p>
+            </div>
+        </div>
+        
+        <div class="benefit">
+            <i class="fas fa-sync-alt"></i>
+            <div class="benefit-content">
+                <h3>Regelmatige Updates</h3>
+                <p>We verbeteren de app continu met nieuwe functies en optimalisaties, gebaseerd op feedback van gebruikers.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Begin vandaag nog met registreren</h2>
+            <p>Download de app nu en ontdek hoe eenvoudig het is om je vondsten te beheren</p>
+            <a href="#" class="cta-button">
+                <i class="fab fa-google-play"></i>
+                Download op Google Play
+            </a>
+        </div>
+    </section>
 
     <footer>
-        <p>Zoekapp - De complete app voor metaaldetector hobbyisten</p>
-        <p>© 2024 Zoekapp. Alle rechten voorbehouden.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Over Zoekapp</h3>
+                <ul>
+                    <li><a href="#">Over ons</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy beleid</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Handige Links</h3>
+                <ul>
+                    <li><a href="https://portable-antiquities.nl/panapp/">PAN</a></li>
+                    <li><a href="https://muntvondsten.dnb.nl/#/">Numis</a></li>
+                    <li><a href="https://formulier.cultureelerfgoed.nl/archis/vondstmeldingsformulier">Archis</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Ondersteuning</h3>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Handleiding</a></li>
+                    <li><a href="#">Meld een probleem</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright container">
+            <p>&copy; 2024 Zoekapp. Alle rechten voorbehouden.</p>
+        </div>
     </footer>
 </body>
 </html>
