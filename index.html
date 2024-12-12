@@ -10,6 +10,7 @@
         :root {
             --primary-color: #2196F3;
             --secondary-color: #1976D2;
+            --accent-color: #FFC107;
             --text-color: #333;
             --light-gray: #f5f5f5;
             --spacing: 1rem;
@@ -27,134 +28,230 @@
             color: var(--text-color);
         }
 
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 6rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 3rem 2rem;  /* Verminderd van 6rem naar 3rem */
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -50%;
-            left: -10%;
-            right: -10%;
-            height: 70%;  /* Verminderd van 100% naar 70% */
-            background: white;
-            transform: rotate(-3deg);
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 2;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Toegevoegd voor betere leesbaarheid */
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto 2rem auto; /* Toegevoegd margin-bottom */
-            position: relative;
-            z-index: 2;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Toegevoegd voor betere leesbaarheid */
-            background: rgba(0,0,0,0.1); /* Lichte achtergrond voor betere leesbaarheid */
-            padding: 0.5rem;
-            border-radius: 4px;
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 2rem;
         }
 
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(-45deg, var(--primary-color), var(--secondary-color), #1565C0, #0D47A1);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            color: white;
+            text-align: left;
+            padding-right: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin: 2rem 0 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-visuals {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .app-preview {
+            position: relative;
+            width: 300px;
+            height: 600px;
+            background: white;
+            border-radius: 40px;
+            padding: 15px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            transform: rotate(-5deg);
+        }
+
+        .app-screen {
+            width: 100%;
+            height: 100%;
+            background: var(--light-gray);
+            border-radius: 25px;
+            overflow: hidden;
+        }
+
+        .floating-finds {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .find-1 { top: 10%; right: -30px; animation-delay: 0s; }
+        .find-2 { bottom: 20%; left: -40px; animation-delay: -2s; }
+        .find-3 { top: 50%; right: -50px; animation-delay: -4s; }
+
+        .app-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            border-radius: 20px;
+            position: absolute;
+            top: -40px;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+
+        /* Features Section */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin: 4rem 0;
+            margin: 6rem auto;
+            max-width: 1200px;
+            padding: 0 2rem;
         }
 
         .feature {
             background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary-color);
+            transform: scaleX(0);
             transition: transform 0.3s ease;
         }
 
         .feature:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+        }
+
+        .feature:hover::before {
+            transform: scaleX(1);
         }
 
         .feature-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .feature h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--secondary-color);
+            color: var(--text-color);
         }
 
+        /* Screenshots Section */
         .screenshots {
             background: var(--light-gray);
-            padding: 4rem 0;
-            margin: 4rem 0;
+            padding: 6rem 0;
             position: relative;
-            overflow: hidden;
+        }
+
+        .screenshots h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-color);
         }
 
         .screenshot-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin: 2rem 0;
+            padding: 2rem;
         }
 
         .screenshot {
             background: white;
-            padding: 1rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .screenshot:hover {
+            transform: translateY(-10px);
         }
 
         .screenshot img {
             width: 100%;
             height: auto;
             border-radius: 8px;
-            transition: transform 0.3s ease;
+            margin-bottom: 1rem;
         }
 
-        .screenshot:hover img {
-            transform: scale(1.05);
+        .screenshot p {
+            text-align: center;
+            font-weight: 500;
+            color: var(--text-color);
         }
 
+        /* CTA Section */
         .cta {
             text-align: center;
-            padding: 6rem 0;
+            padding: 8rem 0;
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            margin-top: 4rem;
+            position: relative;
         }
 
         .cta h2 {
@@ -162,71 +259,57 @@
             margin-bottom: 1.5rem;
         }
 
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
         .cta-button {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             background: white;
             color: var(--primary-color);
-            padding: 1rem 2.5rem;
+            padding: 1.2rem 3rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             font-size: 1.2rem;
-            transition: transform 0.3s ease;
-            margin-top: 2rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-        }
-
-        .benefits {
-            padding: 4rem 0;
-            background: white;
-        }
-
-        .benefit {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            border-radius: 8px;
-            background: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .benefit i {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-right: 1.5rem;
-            padding-top: 0.25rem;
-        }
-
-        .benefit-content h3 {
-            margin-bottom: 0.5rem;
-            color: var(--secondary-color);
-        }
-
-        footer {
-            background: var(--text-color);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            background: var(--accent-color);
             color: white;
-            padding: 3rem 0;
-            margin-top: 4rem;
+        }
+
+        .cta-button i {
+            margin-right: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 6rem 0 3rem;
         }
 
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            gap: 3rem;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
 
         .footer-section h3 {
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
         }
 
         .footer-section ul {
@@ -234,18 +317,19 @@
         }
 
         .footer-section ul li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
         }
 
         .footer-section a {
-            color: white;
+            color: rgba(255,255,255,0.8);
             text-decoration: none;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
         .footer-section a:hover {
-            opacity: 1;
+            color: var(--accent-color);
+            transform: translateX(5px);
         }
 
         .copyright {
@@ -255,146 +339,107 @@
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero p {
-                font-size: 1.2rem;
-            }
-
-            .benefit {
-                flex-direction: column;
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-container {
+                grid-template-columns: 1fr;
                 text-align: center;
             }
 
-            .benefit i {
-                margin-right: 0;
-                margin-bottom: 1rem;
+            .hero-content {
+                padding-right: 0;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .app-preview {
+                width: 250px;
+                height: 500px;
+                margin: 2rem auto;
+            }
+
+            .floating-finds {
+                width: 100px;
+                height: 100px;
+            }
+
+            .features {
+                margin: 3rem auto;
             }
         }
     </style>
 </head>
 <body>
     <section class="hero">
-        <h1>Zoekapp</h1>
-        <p>De beste manier om je metaaldetector vondsten te registreren, beheren en delen</p>
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="app-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h1>Zoekapp</h1>
+                <p>Ontdek, registreer en deel je metaaldetector vondsten als nooit tevoren</p>
+                <a href="#" class="cta-button">
+                    <i class="fab fa-google-play"></i>
+                    Download nu
+                </a>
+            </div>
+            <div class="hero-visuals">
+                <div class="app-preview">
+                    <div class="app-screen">
+                        <img src="./images/vondst-invoeren.jpg" alt="App preview" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                </div>
+                <div class="floating-finds find-1">
+                    <img src="./images/masker.png" alt="Vondst 1" style="width: 80%; height: 80%; object-fit: cover; border-radius: 15px;">
+                </div>
+                <div class="floating-finds find-2">
+                    <img src="./images/sceatta.png" alt="Vondst 2" style="width: 80%; height: 80%; object-fit: cover; border-radius: 15px;">
+                </div>
+                <div class="floating-finds find-3">
+                    <img src=".images/fibula.png" alt="Vondst 3" style="width: 80%; height: 80%; object-fit: cover; border-radius: 15px;">
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="container">
-        <div class="features">
-            <div class="feature">
-                <i class="fas fa-map-marked-alt feature-icon"></i>
-                <h3>Interactieve Kaart</h3>
-                <p>Bekijk al je vondsten op een overzichtelijke kaart. Filter op periode en navigeer eenvoudig terug naar vindplaatsen. Perfect voor het bijhouden van je zoeklocaties.</p>
-            </div>
-            
-            <div class="feature">
-                <i class="fas fa-camera feature-icon"></i>
-                <h3>Foto's & Details</h3>
-                <p>Leg elke vondst vast met hoogwaardige foto's en uitgebreide details. Categoriseer op periode, type en locatie voor een complete documentatie van je collectie.</p>
-            </div>
-            
-            <div class="feature">
-                <i class="fas fa-share-alt feature-icon"></i>
-                <h3>Eenvoudig Delen</h3>
-                <p>Deel je mooiste vondsten direct met andere enthousiastelingen. Met één druk op de knop deel je foto's en details met vrienden of op sociale media.</p>
-            </div>
+    <section class="features">
+        <div class="feature">
+            <i class="fas fa-map-marked-alt feature-icon"></i>
+            <h3>Interactieve Kaart</h3>
+            <p>Visualiseer je zoektochten op een geavanceerde kaart met filters voor periode en type. Navigeer moeiteloos terug naar je favoriete zoeklocaties en ontdek nieuwe gebieden.</p>
+        </div>
+        
+        <div class="feature">
+            <i class="fas fa-camera feature-icon"></i>
+            <h3>Professionele Documentatie</h3>
+            <p>Leg elke vondst vast met HD-foto's en gedetailleerde beschrijvingen. Gebruik onze geavanceerde categorisatie tools voor een museum-waardige collectie.</p>
+        </div>
+        
+        <div class="feature">
+            <i class="fas fa-share-alt feature-icon"></i>
+            <h3>Community Delen</h3>
+            <p>Word deel van een groeiende gemeenschap van enthousiaste zoekers. Deel je ontdekkingen, leer van anderen en draag bij aan historisch onderzoek.</p>
         </div>
     </section>
 
     <section class="screenshots">
         <div class="container">
-            <h2>App Impressie</h2>
+            <h2>Ontdek de Mogelijkheden</h2>
             <div class="screenshot-grid">
                 <div class="screenshot">
-                    <img src="./images/vondst-invoeren.jpg" alt="Vondst invoeren scherm">
-                    <p>Eenvoudig vondsten registreren</p>
+                    <img src="./images/mijn-vondsten.jpg" alt="Mijn vondsten interface">
+                    <p>Overzicht van alle vondsten</p>
                 </div>
                 <div class="screenshot">
-                    <img src="./images/vondstenkaart.jpg" alt="Vondstenkaart scherm">
-                    <p>Overzichtelijke vondstenkaart</p>
+                    <img src="./images/vondstenkaart.jpg" alt="Interactieve kaart">
+                    <p>Geavanceerde vondstenkaart</p>
                 </div>
                 <div class="screenshot">
-                    <img src="./images/galerij.jpg" alt="Galerij scherm">
-                    <p>Uitgebreide fotogalerij</p>
+                    <img src=".images/galerij.jpg" alt="Fotogalerij">
+                    <p>Professionele fotogalerij</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="benefits container">
-        <h2>Waarom Zoekapp?</h2>
-        <div class="benefit">
-            <i class="fas fa-check-circle"></i>
-            <div class="benefit-content">
-                <h3>Gebruiksvriendelijk</h3>
-                <p>Ontworpen met de gebruiker in gedachten. Geen ingewikkelde menu's of lastige procedures, gewoon direct aan de slag met het registreren van je vondsten.</p>
-            </div>
-        </div>
-        
-        <div class="benefit">
-            <i class="fas fa-shield-alt"></i>
-            <div class="benefit-content">
-                <h3>Veilig & Privé</h3>
-                <p>Al je gegevens worden lokaal op je telefoon opgeslagen. Maak eenvoudig back-ups en bepaal zelf wat je wilt delen.</p>
-            </div>
-        </div>
-        
-        <div class="benefit">
-            <i class="fas fa-sync-alt"></i>
-            <div class="benefit-content">
-                <h3>Regelmatige Updates</h3>
-                <p>We verbeteren de app continu met nieuwe functies en optimalisaties, gebaseerd op feedback van gebruikers.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta">
-        <div class="container">
-            <h2>Begin vandaag nog met registreren</h2>
-            <p>Download de app nu en ontdek hoe eenvoudig het is om je vondsten te beheren</p>
-            <a href="#" class="cta-button">
-                <i class="fab fa-google-play"></i>
-                Download op Google Play
-            </a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Over Zoekapp</h3>
-                <ul>
-                    <li><a href="#">Over ons</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Privacy beleid</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Handige Links</h3>
-                <ul>
-                    <li><a href="https://portable-antiquities.nl/panapp/">PAN</a></li>
-                    <li><a href="https://muntvondsten.dnb.nl/#/">Numis</a></li>
-                    <li><a href="https://formulier.cultureelerfgoed.nl/archis/vondstmeldingsformulier">Archis</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-section">
-                <h3>Ondersteuning</h3>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Handleiding</a></li>
-                    <li><a href="#">Meld een probleem</a></li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="copyright container">
-            <p>&copy; 2024 Zoekapp. Alle rechten voorbehouden.</p>
-        </div>
-    </footer>
-</body>
-</html>
