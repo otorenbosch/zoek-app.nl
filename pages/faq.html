@@ -86,10 +86,29 @@
         .faq-answer ul {
             margin-left: 1.5rem;
             margin-top: 0.5rem;
+            margin-bottom: 1rem;
         }
 
         .faq-answer li {
             margin-bottom: 0.5rem;
+        }
+
+        .faq-answer ul ul {
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-answer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .faq-answer a:hover {
+            text-decoration: underline;
+        }
+
+        .faq-answer p {
+            margin-bottom: 1rem;
         }
 
         @media (max-width: 768px) {
@@ -111,7 +130,50 @@
 
     <main class="faq-content">
         <section class="faq-section">
-            <h2>Technische Vragen</h2>
+            <h2>Belangrijke Informatie over Vondstmeldingen</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-gavel"></i>
+                    Welke vondsten moet ik melden?
+                </div>
+                <div class="faq-answer">
+                    <p>In principe moeten alle vondsten van vóór 1946 worden gemeld, omdat deze waardevolle informatie kunnen opleveren. Modern materiaal zoals aluminiumfolie en blikjes hoeft niet gemeld te worden.</p>
+                    
+                    <p><strong>Waar meld ik mijn vondsten?</strong></p>
+                    <ul>
+                        <li><strong>PAN (Portable Antiquities of the Netherlands):</strong> 
+                            <ul>
+                                <li>Dit is de hoofddatabase voor archeologische vondsten</li>
+                                <li>Website: <a href="https://www.portable-antiquities.nl/" target="_blank">www.portable-antiquities.nl</a></li>
+                                <li>Contact: <a href="mailto:pan.fgw@vu.nl">pan.fgw@vu.nl</a></li>
+                            </ul>
+                        </li>
+                        <li><strong>NUMIS:</strong> 
+                            <ul>
+                                <li>Voor munten en penningen</li>
+                                <li>PAN meldt vondsten automatisch door aan NUMIS</li>
+                                <li>Apart melden bij NUMIS is niet nodig</li>
+                            </ul>
+                        </li>
+                        <li><strong>Archis (RCE):</strong> 
+                            <ul>
+                                <li>Systeem voor professionele archeologen</li>
+                                <li>Bevat ook historische vondstmeldingen</li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <p><strong>Tips voor het melden:</strong></p>
+                    <ul>
+                        <li>Gebruik de 'Vondst aanmelden' functie in de app voor directe toegang tot de juiste meldpunten</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <h2>Over de App</h2>
             
             <div class="faq-item">
                 <div class="faq-question">
@@ -148,6 +210,27 @@
 
             <div class="faq-item">
                 <div class="faq-question">
+                    <i class="fas fa-globe"></i>
+                    Kan ik de app ook in het buitenland gebruiken?
+                </div>
+                <div class="faq-answer">
+                    <p>Ja, de Zoekapp kan ook in het buitenland gebruikt worden voor het registreren van je vondsten. Belangrijke punten:</p>
+                    <ul>
+                        <li>De app werkt wereldwijd voor het vastleggen van vondsten en locaties</li>
+                        <li>De kaartfunctie en GPS-bepaling werken internationaal</li>
+                        <li>Alle functies zoals foto's maken en back-ups zijn beschikbaar</li>
+                        <li>Let op: elk land heeft zijn eigen regels voor metaaldetectie</li>
+                    </ul>
+                    
+                    <p>Voor informatie over in welke landen je mag zoeken en wat in deze landen de regels zijn kun je de brochure 'Zoeken in het buitenland' van de detector amateur downloaden:</p>
+                    <a href="/documents/buitenland.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Download de brochure 'Zoeken in het buitenland'</a></p>
+                    
+                    <p><strong>Belangrijk:</strong> Informeer je altijd vooraf over de lokale wetgeving en regelgeving van het land waar je wilt gaan zoeken.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
                     <i class="fas fa-hdd"></i>
                     Hoeveel ruimte heeft de app nodig?
                 </div>
@@ -158,7 +241,7 @@
         </section>
 
         <section class="faq-section">
-            <h2>Functionele Vragen</h2>
+            <h2>Gebruik van de App</h2>
             
             <div class="faq-item">
                 <div class="faq-question">
@@ -166,64 +249,45 @@
                     Kan ik meerdere foto's toevoegen?
                 </div>
                 <div class="faq-answer">
-                    <p>Per vondst kun je maximaal 2 foto's toevoegen. Dit kunnen zijn:</p>
+                    <p>Per vondst kun je maximaal 2 foto's toevoegen:</p>
                     <ul>
                         <li>Nieuwe foto's die je direct met je camera maakt</li>
                         <li>Bestaande foto's uit je galerij</li>
                     </ul>
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <i class="fas fa-file-export"></i>
-                    Hoe kan ik mijn vondsten exporteren?
-                </div>
-                <div class="faq-answer">
-                    <p>Je vondsten exporteren gaat via de back-up functie. De back-up bevat alle informatie over je vondsten inclusief foto's. Deze kun je vervolgens:</p>
-                    <ul>
-                        <li>Bewaren als reserve-kopie</li>
-                        <li>Overzetten naar een ander toestel</li>
-                        <li>Delen met anderen</li>
-                    </ul>
+                    <p>Zorg voor scherpe, duidelijke foto's die de vondst goed weergeven.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">
                     <i class="fas fa-share-alt"></i>
-                    Kan ik vondsten delen met anderen?
+                    Hoe kan ik mijn vondsten delen?
                 </div>
                 <div class="faq-answer">
-                    <p>Je kunt individuele vondsten delen door:</p>
+                    <p>Je kunt vondsten op verschillende manieren delen:</p>
                     <ul>
-                        <li>De vondst te openen in detail-weergave</li>
-                        <li>Op het deel-icoon te tikken</li>
-                        <li>Te kiezen hoe je de vondst wilt delen (bijv. WhatsApp, email)</li>
+                        <li>Een enkele vondst delen:
+                            <ul>
+                                <li>Open de vondst in detail-weergave</li>
+                                <li>Tik op het deel-icoon</li>
+                                <li>Kies hoe je wilt delen (WhatsApp, email, etc.)</li>
+                            </ul>
+                        </li>
+                        <li>Al je vondsten overzetten:
+                            <ul>
+                                <li>Maak een back-up van al je vondsten</li>
+                                <li>Deze back-up bevat alle informatie inclusief foto's</li>
+                                <li>De back-up kun je delen of overzetten naar een ander toestel</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <section class="faq-section">
-            <h2>Juridische Vragen</h2>
+            <h2>Wettelijke Regelgeving</h2>
             
-            <div class="faq-item">
-                <div class="faq-question">
-                    <i class="fas fa-gavel"></i>
-                    Waar moet ik mijn vondsten melden?
-                </div>
-                <div class="faq-answer">
-                    <p>Afhankelijk van het type vondst zijn er verschillende meldpunten:</p>
-                    <ul>
-                        <li><strong>PAN:</strong> Voor archeologische vondsten zoals fibula's en gespen</li>
-                        <li><strong>Numis:</strong> Voor munten en penningen</li>
-                        <li><strong>Archis:</strong> Voor alle archeologische vondsten</li>
-                    </ul>
-                    <p>Via de 'Vondst aanmelden' functie in de app word je direct naar het juiste meldpunt geleid.</p>
-                </div>
-            </div>
-
             <div class="faq-item">
                 <div class="faq-question">
                     <i class="fas fa-balance-scale"></i>
@@ -235,9 +299,28 @@
                         <li>Zoeken mag tot maximaal 30 cm diep</li>
                         <li>Niet zoeken in archeologische monumenten</li>
                         <li>Toestemming nodig van de grondeigenaar</li>
-                        <li>Vondsten moeten worden gemeld bij de juiste instanties</li>
+                        <li>Vondsten van vóór 1946 moeten worden gemeld</li>
+                        <li>Respecteer beschermde gebieden</li>
                     </ul>
                     <p>Raadpleeg voor de volledige regelgeving de website van de Rijksdienst voor het Cultureel Erfgoed.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <i class="fas fa-book"></i>
+                    Waar vind ik meer informatie over de regels?
+                </div>
+                <div class="faq-answer">
+                    <p>Voor uitgebreide informatie over metaaldetectie in Nederland kunt u de officiële brochure 'Metaaldetectie in Nederland' downloaden:</p>
+                    <p><a href="/documents/metaaldetectieinnederland.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Download de brochure 'Metaaldetectie in Nederland'</a></p>
+                    <p>Deze brochure bevat:</p>
+                    <ul>
+                        <li>Gedetailleerde uitleg over wetgeving</li>
+                        <li>Informatie over wat wel en niet mag</li>
+                        <li>Richtlijnen voor verantwoord zoeken</li>
+                        <li>Tips voor het melden van vondsten</li>
+                    </ul>
                 </div>
             </div>
 
