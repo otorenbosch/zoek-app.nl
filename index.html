@@ -141,12 +141,12 @@
 
         /* App Icon Styles */
         .app-icon {
-            width: 100px;
-            height: 100px;
-            background: var(--primary-color);
-            border-radius: 20px;
+            width: 240px;
+            height: 240px;
+            background: transparent; /* Verwijder de achtergrondkleur */
+            border-radius: 28px;    /* Moderne app icon afronding */
             position: absolute;
-            top: -50px;
+            top: -60px;
             left: 0;
             display: flex;
             align-items: center;
@@ -156,9 +156,10 @@
         }
 
         .app-icon img {
-            width: 80%;
-            height: 80%;
-            object-fit: contain;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;    /* Zorgt dat de afbeelding de ruimte goed vult */
+            border-radius: 28px;  /* Zelfde afronding als de container */
         }
 
         /* Features Section */
@@ -411,8 +412,8 @@
                     <img src="./images/icoon-zoekapp.png" alt="Zoekapp logo">
                 </div>
                 <h1>Zoekapp</h1>
-                <p>Zoek, vind en leg eenvoudig al je metaaldetector vondsten eenvoudig vast!</p>
-                <a href="#" class="cta-button">
+                <p>Zoek, vind en leg eenvoudig al je metaaldetector vondsten vast!</p>
+                <a href="https://play.google.com/apps/internaltest/4701427020624184198" class="cta-button" target="_blank">
                     <i class="fab fa-google-play"></i>
                     Download nu
                 </a>
@@ -492,7 +493,7 @@
         <div class="container">
             <h2>Start Je Digitale Collectie</h2>
             <p>Download nu en transformeer je hobby naar een professionele verzameling</p>
-            <a href="#" class="cta-button">
+            <a href="https://play.google.com/apps/internaltest/4701427020624184198" class="cta-button" target="_blank">
                 <i class="fab fa-google-play"></i>
                 Download op Google Play
             </a>
