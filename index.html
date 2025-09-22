@@ -267,29 +267,47 @@
             opacity: 0.9;
         }
 
+        .download-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         .cta-button {
             display: inline-flex;
             align-items: center;
             background: white;
             color: var(--primary-color);
-            padding: 1.2rem 3rem;
+            padding: 1.2rem 2.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             transition: all 0.3s ease;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            min-width: 200px;
+            justify-content: center;
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            background: var(--accent-color);
+        }
+
+        .cta-button.android:hover {
+            background: #34A853;
+            color: white;
+        }
+
+        .cta-button.ios:hover {
+            background: #007AFF;
             color: white;
         }
 
         .cta-button i {
-            margin-right: 1rem;
+            margin-right: 0.8rem;
+            font-size: 1.3rem;
         }
 
         /* Footer */
@@ -388,6 +406,18 @@
             .features {
                 margin: 3rem auto;
             }
+
+            .download-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .cta-button {
+                min-width: 250px;
+                font-size: 1rem;
+                padding: 1rem 2rem;
+            }
         }
     </style>
 </head>
@@ -398,10 +428,16 @@
             <div class="hero-content">
                 <h1>Zoekapp</h1>
                 <p>Zoek, vind en leg eenvoudig al je metaaldetector vondsten vast!</p>
-                <a href="https://play.google.com/apps/internaltest/4701427020624184198" class="cta-button" target="_blank">
-                    <i class="fab fa-google-play"></i>
-                    Download nu
-                </a>
+                <div class="download-buttons">
+                    <a href="https://play.google.com/store/apps/details?id=nl.zoekapp.vondsten" class="cta-button android" target="_blank">
+                        <i class="fab fa-google-play"></i>
+                        Google Play
+                    </a>
+                    <a href="https://testflight.apple.com/join/HW8JA1Qr" class="cta-button ios" target="_blank">
+                        <i class="fab fa-apple"></i>
+                        TestFlight
+                    </a>
+                </div>
             </div>
             <div class="hero-visuals">
                 <div class="app-preview">
@@ -446,9 +482,9 @@
         </div>
         
         <div class="feature">
-            <i class="fas fa-share-alt feature-icon"></i>
-            <h3>Community Delen</h3>
-            <p>Word deel van een groeiende gemeenschap van enthousiaste zoekers. Deel je ontdekkingen, leer van anderen en draag bij aan historisch onderzoek.</p>
+            <i class="fas fa-layer-group feature-icon"></i>
+            <h3>Perceelbeheer</h3>
+            <p>Beheer kadastrale percelen met eigenaarsinformatie, houd de status bij van onderzochte gebieden en krijg statistieken per perceel. Ideaal voor professioneel vondstenbeheer.</p>
         </div>
     </section>
 
@@ -458,16 +494,28 @@
             <h2>Ontdek de Mogelijkheden</h2>
             <div class="screenshot-grid">
                 <div class="screenshot">
-                    <img src="./images/mijn-vondsten.jpg" alt="Vondst invoeren interface">
+                    <img src="./images/vondst-invoeren.jpg" alt="Vondst invoeren interface">
+                    <p>Intuïtieve vondst invoer</p>
+                </div>
+                <div class="screenshot">
+                    <img src="./images/vondsten.jpg" alt="Vondsten overzicht">
                     <p>Overzicht van alle vondsten</p>
                 </div>
                 <div class="screenshot">
-                    <img src="./images/vondstenkaart.jpg" alt="Interactieve kaart">
-                    <p>Geavanceerde vondstenkaart</p>
+                    <img src="./images/percelen-info.jpg" alt="Perceelbeheer">
+                    <p>Geavanceerd perceelbeheer</p>
+                </div>
+                <div class="screenshot">
+                    <img src="./images/kaart-archeologische-gebieden.jpg" alt="Archeologische kaart">
+                    <p>Kaart met archeologische gebieden</p>
                 </div>
                 <div class="screenshot">
                     <img src="./images/galerij.jpg" alt="Fotogalerij">
                     <p>Professionele fotogalerij</p>
+                </div>
+                <div class="screenshot">
+                    <img src="./images/melden.jpg" alt="Vondst aanmelden">
+                    <p>Eenvoudig vondsten melden</p>
                 </div>
             </div>
         </div>
@@ -478,10 +526,16 @@
         <div class="container">
             <h2>Start Je Digitale Collectie</h2>
             <p>Download nu en transformeer je hobby naar een professionele verzameling</p>
-            <a href="https://play.google.com/apps/internaltest/4701427020624184198" class="cta-button" target="_blank">
-                <i class="fab fa-google-play"></i>
-                Download op Google Play
-            </a>
+            <div class="download-buttons">
+                <a href="https://play.google.com/store/apps/details?id=nl.zoekapp.vondsten" class="cta-button android" target="_blank">
+                    <i class="fab fa-google-play"></i>
+                    Download op Google Play
+                </a>
+                <a href="https://testflight.apple.com/join/HW8JA1Qr" class="cta-button ios" target="_blank">
+                    <i class="fab fa-apple"></i>
+                    Download via TestFlight
+                </a>
+            </div>
         </div>
     </section>
 
@@ -517,7 +571,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2024 Zoekapp. Alle rechten voorbehouden.</p>
+            <p>&copy; 2025 Zoekapp. Alle rechten voorbehouden.</p>
             <p>Ontwikkeld met <i class="fas fa-heart" style="color: var(--accent-color);"></i> voor de metaaldetectie gemeenschap</p>
             <p>
                 <a href="pages/privacy.html" target="_blank">Privacybeleid</a> |
