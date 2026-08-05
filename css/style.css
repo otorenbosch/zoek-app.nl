@@ -42,11 +42,6 @@ html {
     scroll-behavior: smooth;
 }
 
-html, body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
 body {
     font-family: var(--font-body);
     color: var(--ink);
@@ -202,6 +197,10 @@ h1, h2, h3, h4 {
     list-style: none;
 }
 
+.nav-links-download {
+    display: none;
+}
+
 .nav-links a {
     text-decoration: none;
     color: var(--ink-soft);
@@ -259,6 +258,25 @@ h1, h2, h3, h4 {
     .nav-links a {
         display: block;
         padding: 0.9rem 0;
+    }
+
+    .nav-links-download {
+        display: block;
+        border-top: none;
+        margin-top: 0.6rem;
+        padding-bottom: 0.6rem;
+    }
+
+    .nav-links-download a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0.85rem 0;
+        background: var(--primary);
+        color: var(--white);
+        border-radius: 50px;
+        font-weight: 600;
     }
 
     .nav-toggle {
