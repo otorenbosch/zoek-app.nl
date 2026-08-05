@@ -3,581 +3,880 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zoekapp - De complete app voor het registreren en beheren van je metaaldetector vondsten. Eenvoudig vondsten vastleggen, delen en aanmelden bij officiële instanties.">
-    <title>Zoekapp - Metaaldetector Vondsten Registratie</title>
+    <meta name="description" content="Zoekapp is de app voor metaaldetectorzoekers: leg vondsten vast op de kaart, beheer percelen en eigenaren, en meld vondsten rechtstreeks bij PAN.">
+    <title>Zoekapp: vondsten vastleggen, percelen beheren, melden bij PAN</title>
+    <link rel="icon" href="images/icoon-zoekapp.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Root Variables */
-        :root {
-            --primary-color: #2196F3;
-            --secondary-color: #1976D2;
-            --accent-color: #FFC107;
-            --text-color: #333;
-            --light-gray: #f5f5f5;
-            --spacing: 1rem;
-        }
-
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Hero Section */
+        /* ---------- Hero ---------- */
         .hero {
-            background: url('/images/header.jpg') no-repeat center center;
-            background-size: cover;
-            padding: 1.5rem 2rem; /* Verminderde padding */
             position: relative;
             overflow: hidden;
-            min-height: 300px; /* Vaste lagere hoogte */
-            display: flex;
-            align-items: center;
+            padding: 4rem 0 6rem;
+            background: var(--primary-dark);
         }
 
-        /* Subtiele donkere overlay voor betere leesbaarheid van de tekst */
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
-            z-index: 1;
+            inset: 0;
+            background: url('images/header.jpg') center 30% / cover no-repeat;
+            opacity: 0.32;
+            mix-blend-mode: luminosity;
         }
 
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(27, 73, 102, 0.96), rgba(44, 102, 147, 0.88));
         }
 
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .hero-inner {
             position: relative;
             z-index: 2;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1rem 2rem 0;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 3rem;
             align-items: center;
         }
 
-        .hero-content {
-            color: white;
-            text-align: left;
-            padding-right: 2rem;
+        .hero-content .eyebrow {
+            color: var(--bronze-light);
+            justify-content: flex-start;
         }
 
         .hero-content h1 {
-            font-size: 4rem;
-            margin: 2rem 0 1rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            font-size: clamp(2.4rem, 4.6vw, 3.6rem);
+            color: var(--white);
+            margin: 1rem 0 1.2rem;
         }
 
-        .hero-content p {
-            font-size: 1.2rem; /* Kleinere tekst */
-            margin-bottom: 1rem; /* Minder marge */
+        .hero-content p.lead {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.88);
+            max-width: 520px;
+            margin-bottom: 2.2rem;
         }
 
-        .hero-visuals {
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-note {
+            margin-top: 1.4rem;
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.65);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Phone + floating artefacts */
+        .hero-visual {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 460px;
         }
 
-        /* App Preview Styles */
-        .app-preview {
-            position: relative;
-            width: 200px;
-            height: 400px;
-            background: rgb(70, 68, 68);
-            border-radius: 35px;
-            padding:8px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-            transform: rotate(-5deg);
-        }
-
-        .app-screen {
-            width: 100%;
-            height: 100%;
-            background: var(--light-gray);
-            border-radius: 25px;
-            overflow: hidden;
-        }
-
-        /* Floating Finds Animation */
-        .floating-finds {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: float 6s ease-in-out infinite;
+        .phone {
+            width: 264px;
+            height: 538px;
+            background: #16232a;
+            border-radius: 40px;
+            padding: 10px;
+            box-shadow: 0 35px 60px rgba(0, 0, 0, 0.35);
+            transform: rotate(-4deg);
+            transform-style: preserve-3d;
+            will-change: transform;
             z-index: 2;
         }
 
-        .find-1 { top: 5%; right: -30px; animation-delay: 0s; }
-        .find-2 { top: 25%; left: -40px; animation-delay: -2s; }
-        .find-3 { top: 40%; right: -50px; animation-delay: -4s; }
-        .find-4 { top: 50%; left: -30px; animation-delay: -1s; }
-        .find-5 { top: 70%; right: -40px; animation-delay: -3s; }
-        .find-6 { top: 80%; left: -50px; animation-delay: -5s; }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-            100% { transform: translateY(0) rotate(0deg); }
-        }
-
-        /* Features Section */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 6rem auto;
-            max-width: 1200px;
-            padding: 0 2rem;
-        }
-
-        .feature {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+        .phone-screen {
             width: 100%;
-            height: 4px;
-            background: var(--primary-color);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
+            height: 100%;
+            border-radius: 28px;
+            overflow: hidden;
+            background: var(--parchment);
         }
 
-        .feature:hover {
-            transform: translateY(-10px);
+        .phone-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .feature:hover::before {
-            transform: scaleX(1);
+        .app-icon-badge {
+            position: absolute;
+            top: -8%;
+            left: -6%;
+            width: 92px;
+            height: 92px;
+            background: var(--white);
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            padding: 12px;
+            animation: bob 7s ease-in-out infinite;
+            z-index: 3;
+        }
+
+        .app-icon-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 14px;
+        }
+
+        @keyframes bob {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-14px); }
+        }
+
+        @keyframes heroIn {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-content .eyebrow,
+        .hero-content h1,
+        .hero-content p.lead,
+        .hero-content .hero-ctas,
+        .hero-content .hero-note,
+        .hero-visual {
+            opacity: 0;
+            animation: heroIn 0.8s ease forwards;
+        }
+
+        .hero-content .eyebrow { animation-delay: 0.05s; }
+        .hero-content h1 { animation-delay: 0.16s; }
+        .hero-content p.lead { animation-delay: 0.3s; }
+        .hero-content .hero-ctas { animation-delay: 0.42s; }
+        .hero-content .hero-note { animation-delay: 0.52s; }
+        .hero-visual { animation-delay: 0.3s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .hero-content .eyebrow,
+            .hero-content h1,
+            .hero-content p.lead,
+            .hero-content .hero-ctas,
+            .hero-content .hero-note,
+            .hero-visual {
+                opacity: 1;
+                animation: none;
+            }
+        }
+
+        @media (max-width: 960px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content .eyebrow { justify-content: center; }
+            .hero-content p.lead { margin-left: auto; margin-right: auto; }
+            .hero-ctas { justify-content: center; }
+            .hero-note { justify-content: center; flex-wrap: wrap; text-align: center; }
+            .hero-visual { margin-top: 2rem; padding: 0 2.2rem; }
+        }
+
+        @media (max-width: 480px) {
+            .phone { width: 190px; height: 388px; }
+            .app-icon-badge { width: 68px; height: 68px; top: -6%; left: -2%; }
+        }
+
+        /* ---------- Trust strip ---------- */
+        .trust-strip {
+            background: var(--white);
+            border-bottom: 1px solid var(--line);
+            padding: 1.4rem 0;
+        }
+
+        .trust-strip .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 2.5rem;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.92rem;
+            color: var(--ink-soft);
+        }
+
+        .trust-strip strong {
+            color: var(--ink);
+        }
+
+        .trust-strip span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .trust-strip i {
+            color: var(--bronze);
+        }
+
+        /* ---------- Section headings ---------- */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-head {
+            max-width: 640px;
+            margin: 0 auto 3.5rem;
+            text-align: center;
+        }
+
+        .section-head h2 {
+            font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+            margin: 0.8rem 0 1rem;
+        }
+
+        .section-head p {
+            color: var(--ink-soft);
+            font-size: 1.08rem;
+        }
+
+        /* ---------- Features ---------- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.6rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: 2.2rem;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .feature-card.featured {
+            background: linear-gradient(160deg, var(--primary-dark), var(--primary));
+            color: var(--white);
+            border-color: transparent;
+        }
+
+        .feature-card.featured h3,
+        .feature-card.featured p {
+            color: var(--white);
+        }
+
+        .feature-card.featured .feature-icon {
+            background: rgba(255, 255, 255, 0.15);
+            color: var(--bronze-light);
         }
 
         .feature-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            background: var(--bronze-light);
+            color: var(--bronze-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.4rem;
         }
 
-        .feature h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-color);
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.7rem;
         }
 
-        /* Screenshots Section */
-        .screenshots {
-            background: var(--light-gray);
-            padding: 6rem 0;
+        .feature-card p {
+            color: var(--ink-soft);
+            font-size: 0.98rem;
+        }
+
+        @media (max-width: 760px) {
+            .features-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ---------- How it works ---------- */
+        .how {
+            background: var(--parchment-alt);
+        }
+
+        .how-steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            counter-reset: step;
+        }
+
+        .how-step {
             position: relative;
+            padding-top: 1rem;
         }
 
-        .screenshots h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--text-color);
+        .how-step::before {
+            counter-increment: step;
+            content: counter(step, decimal-leading-zero);
+            font-family: var(--font-display);
+            font-size: 2.6rem;
+            color: var(--bronze);
+            opacity: 0.55;
+            display: block;
+            margin-bottom: 0.6rem;
         }
 
+        .how-step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .how-step p {
+            color: var(--ink-soft);
+            font-size: 0.98rem;
+        }
+
+        @media (max-width: 760px) {
+            .how-steps { grid-template-columns: 1fr; gap: 2.5rem; }
+        }
+
+        /* ---------- Field moment (full-bleed photo) ---------- */
+        .field-moment {
+            position: relative;
+            height: clamp(320px, 42vw, 480px);
+            overflow: hidden;
+        }
+
+        .field-moment img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 42%;
+        }
+
+        .field-moment::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(20, 32, 31, 0.85) 0%, rgba(20, 32, 31, 0.15) 45%, rgba(20, 32, 31, 0.05) 100%);
+        }
+
+        .field-moment-caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            padding: 2.6rem 2rem;
+            z-index: 2;
+        }
+
+        .field-moment-caption .eyebrow {
+            color: var(--bronze-light);
+        }
+
+        .field-moment-caption p {
+            color: var(--white);
+            font-size: clamp(1.15rem, 2.4vw, 1.6rem);
+            font-family: var(--font-display);
+            max-width: 640px;
+            margin-top: 0.7rem;
+            line-height: 1.35;
+        }
+
+        /* ---------- Screenshots ---------- */
         .screenshot-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 1.8rem;
         }
 
-        .screenshot {
-            background: white;
-            padding: 1.5rem;
+        .screenshot-phone {
+            background: #16232a;
+            border-radius: 24px;
+            padding: 8px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .screenshot-phone:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .screenshot-phone-screen {
             border-radius: 16px;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
+            overflow: hidden;
+            aspect-ratio: 9 / 18.5;
         }
 
-        .screenshot:hover {
-            transform: translateY(-10px);
-        }
-
-        .screenshot img {
+        .screenshot-phone-screen img {
             width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 1rem;
+            height: 100%;
+            object-fit: cover;
         }
 
         .screenshot p {
             text-align: center;
-            font-weight: 500;
-            color: var(--text-color);
+            font-weight: 600;
+            font-size: 0.92rem;
+            margin-top: 0.9rem;
+            color: var(--ink-soft);
         }
 
-        /* CTA Section */
-        .cta {
+        /* ---------- Partners ---------- */
+        .partners {
+            background: var(--white);
+        }
+
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.4rem;
+        }
+
+        .partner-card {
+            border: 1px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 1.6rem;
             text-align: center;
-            padding: 8rem 0;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            position: relative;
+            text-decoration: none;
+            color: var(--ink);
+            transition: border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .partner-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .partner-card i {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 0.7rem;
+        }
+
+        .partner-card h4 {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .partner-card span {
+            font-size: 0.85rem;
+            color: var(--ink-soft);
+        }
+
+        .partner-grid-single {
+            grid-template-columns: 1fr;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .partner-card-featured {
+            background: var(--bronze-light);
+            border-color: rgba(185, 121, 59, 0.3);
+            padding: 2.2rem;
+        }
+
+        .partner-card-featured i {
+            font-size: 2rem;
+            color: var(--bronze-dark);
+        }
+
+        .partner-card-featured h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .partner-note {
+            max-width: 640px;
+            margin: 1.8rem auto 0;
+            text-align: center;
+            font-size: 0.92rem;
+            color: var(--ink-soft);
+        }
+
+        .partner-note a {
+            color: var(--primary);
+        }
+
+        @media (max-width: 760px) {
+            .partner-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ---------- CTA / download ---------- */
+        .cta {
+            background: linear-gradient(155deg, var(--primary-dark), var(--primary));
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 0;
         }
 
         .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            color: var(--white);
+            font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+            margin-bottom: 1rem;
         }
 
         .cta p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+            color: rgba(255, 255, 255, 0.88);
+            max-width: 560px;
+            margin: 0 auto 2.4rem;
+            font-size: 1.08rem;
         }
 
-        .download-buttons {
+        .store-buttons {
             display: flex;
-            gap: 1.5rem;
+            gap: 1.2rem;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        .cta-button {
+        .store-btn {
             display: inline-flex;
-            align-items: center;
-            background: white;
-            color: var(--primary-color);
-            padding: 1.2rem 2.5rem;
-            border-radius: 50px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.1rem;
+            background: var(--white);
+            color: var(--ink);
+            padding: 0.85rem 1.6rem;
+            border-radius: var(--radius-sm);
             text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            min-width: 200px;
-            justify-content: center;
+            min-width: 210px;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease;
         }
 
-        .cta-button:hover {
+        .store-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
 
-        .cta-button.android:hover {
-            background: #34A853;
-            color: white;
+        .store-btn small {
+            font-size: 0.75rem;
+            color: var(--ink-soft);
         }
 
-        .cta-button.ios:hover {
-            background: #007AFF;
-            color: white;
+        .store-btn strong {
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
-        .cta-button i {
-            margin-right: 0.8rem;
-            font-size: 1.3rem;
+        .store-btn.disabled {
+            background: rgba(255, 255, 255, 0.14);
+            color: rgba(255, 255, 255, 0.75);
+            cursor: default;
+            pointer-events: none;
         }
 
-        /* Footer */
-        footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 6rem 0 3rem;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .footer-section h3 {
-            color: var(--accent-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.3rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section ul li {
-            margin-bottom: 0.8rem;
-        }
-
-        .footer-section a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .footer-section a:hover {
-            color: var(--accent-color);
-            transform: translateX(5px);
-        }
-
-        .footer-section ul li i {
-            margin-right: 8px;
-            color: var(--accent-color);
-            font-size: 0.8rem;
-        }
-
-        .footer-bottom {
-            margin-top: 4rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .footer-bottom p {
-            text-align: center;
-            color: rgba(255,255,255,0.6);
-            font-size: 0.9rem;
-        }
-
-        .footer-bottom a {
-            color: var(--accent-color);
-            text-decoration: none;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 968px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-content {
-                padding-right: 0;
-                text-align: center;
-            }
-
-            .hero-content h1 {
-                font-size: 3rem;  /* Kleinere titel */
-                margin: 1rem 0 0.5rem; /* Minder marge */
-            }
-
-            .app-preview {
-                width: 250px;
-                height: 500px;
-                margin: 2rem auto;
-            }
-
-            .floating-finds {
-                width: 80px;
-                height: 80px;
-            }
-
-            .features {
-                margin: 3rem auto;
-            }
-
-            .download-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-
-            .cta-button {
-                min-width: 250px;
-                font-size: 1rem;
-                padding: 1rem 2rem;
-            }
-        }
+        .store-btn.disabled small { color: rgba(255, 255, 255, 0.6); }
+        .store-btn.disabled:hover { transform: none; }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Zoekapp</h1>
-                <p>Zoek, vind en leg eenvoudig al je metaaldetector vondsten vast!</p>
-                <div class="download-buttons">
-                    <a href="https://play.google.com/store/apps/details?id=nl.zoekapp.vondsten" class="cta-button android" target="_blank">
-                        <i class="fab fa-google-play"></i>
-                        Google Play
-                    </a>
-                    <a href="https://testflight.apple.com/join/HW8JA1Qr" class="cta-button ios" target="_blank">
-                        <i class="fab fa-apple"></i>
-                        TestFlight
-                    </a>
-                </div>
+    <header class="site-header">
+        <nav class="nav">
+            <a href="index.html" class="nav-brand">
+                <img src="images/icoon-zoekapp.png" alt="Zoekapp logo">
+                Zoekapp
+            </a>
+            <ul class="nav-links">
+                <li><a href="#functies">Functies</a></li>
+                <li><a href="#zo-werkt-het">Zo werkt het</a></li>
+                <li><a href="pages/over-ons.html">Over ons</a></li>
+                <li><a href="pages/faq.html">Veelgestelde vragen</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+                <a href="#download" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a>
             </div>
-            <div class="hero-visuals">
-                <div class="app-preview">
-                    <div class="app-screen">
-                        <img src="./images/vondst-invoeren.jpg" alt="App preview" style="width: 100%; height: 100%; object-fit: cover;">
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <span class="eyebrow">Voor metaaldetectorzoekers</span>
+                <h1>Van vondst tot melding, alles in &eacute;&eacute;n app</h1>
+                <p class="lead">Leg je vondsten vast op de kaart, houd percelen en eigenaren bij, en meld direct bij PAN, zonder los formulier of dubbel typwerk.</p>
+                <div class="hero-ctas">
+                    <a href="#download" class="btn btn-primary"><i class="fas fa-download"></i> Download de app</a>
+                    <a href="#functies" class="btn btn-ghost"><i class="fas fa-arrow-down"></i> Bekijk functies</a>
+                </div>
+                <p class="hero-note"><i class="fas fa-circle-info"></i> Momenteel in besloten test op iOS en Android. Publieke lancering volgt.</p>
+            </div>
+            <div class="hero-visual">
+                <div class="phone">
+                    <div class="phone-screen">
+                        <img src="images/vondst-invoeren.jpg" alt="Schermafbeelding: vondst invoeren in Zoekapp">
                     </div>
                 </div>
-                <div class="floating-finds find-1">
-                    <img src="./images/masker.png" alt="Romeins masker" style="width: 80%; height: 80%; object-fit: cover; border-radius: 15px;">
-                </div>
-                <div class="floating-finds find-2">
-                    <img src="./images/muntjes.png" alt="Muntjes" style="width: 80%; height: 80%; object-fit: cover; border-radius: 15px;">
-                </div>
-                <div class="floating-finds find-3">
-                    <img src="./images/sceatta.png" alt="Sceatta" style="width: 80%; height: 80%; object-fit: cover; border-radius: 15px;">
-                </div>
-                <div class="floating-finds find-4">
-                    <img src="./images/fibula.png" alt="Romeinse fibula" style="width: 80%; height: 80%; object-fit: cover; border-radius: 15px;">
-                </div>
-                <div class="floating-finds find-5">
-                    <img src="./images/ottoiii.png" alt="Middeleeuwse munt" style="width: 80%; height: 80%; object-fit: cover; border-radius: 15px;">
-                </div>
-                <div class="floating-finds find-6">
-                    <img src="./images/gaspenning.png" alt="Gaspenning" style="width: 80%; height: 80%; object-fit: cover; border-radius: 15px;">
+                <div class="app-icon-badge">
+                    <img src="images/icoon-zoekapp.png" alt="Zoekapp app-icoon">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="feature">
-            <i class="fas fa-map-marked-alt feature-icon"></i>
-			<h3>Interactieve Kaart</h3>
-            <p>Visualiseer je zoektochten op een geavanceerde kaart met filters voor periode en type. Navigeer moeiteloos terug naar je favoriete zoeklocaties en ontdek nieuwe gebieden.</p>
-        </div>
-        
-        <div class="feature">
-            <i class="fas fa-camera feature-icon"></i>
-            <h3>Professionele Documentatie</h3>
-            <p>Leg elke vondst vast met HD-foto's en gedetailleerde beschrijvingen. Gebruik onze geavanceerde categorisatie tools voor een museum-waardige collectie.</p>
-        </div>
-        
-        <div class="feature">
-            <i class="fas fa-layer-group feature-icon"></i>
-            <h3>Perceelbeheer</h3>
-            <p>Beheer kadastrale percelen met eigenaarsinformatie, houd de status bij van onderzochte gebieden en krijg statistieken per perceel. Ideaal voor professioneel vondstenbeheer.</p>
-        </div>
-    </section>
-
-    <!-- Screenshots Section -->
-    <section class="screenshots">
+    <div class="trust-strip">
         <div class="container">
-            <h2>Ontdek de Mogelijkheden</h2>
-            <div class="screenshot-grid">
-                <div class="screenshot">
-                    <img src="./images/vondst-invoeren.jpg" alt="Vondst invoeren interface">
-                    <p>Intuïtieve vondst invoer</p>
-                </div>
-                <div class="screenshot">
-                    <img src="./images/vondsten.jpg" alt="Vondsten overzicht">
-                    <p>Overzicht van alle vondsten</p>
-                </div>
-                <div class="screenshot">
-                    <img src="./images/percelen-info.jpg" alt="Perceelbeheer">
-                    <p>Geavanceerd perceelbeheer</p>
-                </div>
-                <div class="screenshot">
-                    <img src="./images/kaart-archeologische-gebieden.jpg" alt="Archeologische kaart">
-                    <p>Kaart met archeologische gebieden</p>
-                </div>
-                <div class="screenshot">
-                    <img src="./images/galerij.jpg" alt="Fotogalerij">
-                    <p>Professionele fotogalerij</p>
-                </div>
-                <div class="screenshot">
-                    <img src="./images/melden.jpg" alt="Vondst aanmelden">
-                    <p>Eenvoudig vondsten melden</p>
-                </div>
-            </div>
+            <span><i class="fas fa-check-circle"></i> Rechtstreekse koppeling met <strong>PAN</strong></span>
+            <span><i class="fas fa-check-circle"></i> Werkt met kadastrale <strong>percelen</strong></span>
+            <span><i class="fas fa-check-circle"></i> Vondsten en foto's blijven van <strong>jou</strong></span>
         </div>
-    </section>
+    </div>
 
-    <!-- CTA Section -->
-    <section class="cta">
+    <!-- Features -->
+    <section class="section" id="functies">
         <div class="container">
-            <h2>Start Je Digitale Collectie</h2>
-            <p>Download nu en transformeer je hobby naar een professionele verzameling</p>
-            <div class="download-buttons">
-                <a href="https://play.google.com/store/apps/details?id=nl.zoekapp.vondsten" class="cta-button android" target="_blank">
-                    <i class="fab fa-google-play"></i>
-                    Download op Google Play
-                </a>
-                <a href="https://testflight.apple.com/join/HW8JA1Qr" class="cta-button ios" target="_blank">
-                    <i class="fab fa-apple"></i>
-                    Download via TestFlight
-                </a>
+            <div class="section-head reveal">
+                <span class="eyebrow">Functies</span>
+                <h2>Gebouwd voor wie serieus zoekt</h2>
+                <p>Van je eerste vondst van vandaag tot een archief van jaren zoeken: Zoekapp houdt het overzichtelijk.</p>
+            </div>
+            <div class="features-grid reveal-group">
+                <div class="feature-card featured reveal">
+                    <div class="feature-icon"><i class="fas fa-paper-plane"></i></div>
+                    <h3>Rechtstreeks melden bij PAN</h3>
+                    <p>Log in met je eigen PAN-account en meld vondsten direct vanuit de app, inclusief foto's en locatie. Volg de status (in behandeling, beschreven, gevalideerd) zonder los in te loggen op de website.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <h3>Interactieve kaart</h3>
+                    <p>Zie je vondsten, percelen en archeologische aandachtsgebieden op &eacute;&eacute;n kaart, met filters op periode en type.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
+                    <h3>Perceelbeheer</h3>
+                    <p>Koppel eigenaren aan percelen, houd bij welke grond je al onderzocht hebt en bel of app rechtstreeks vanuit de app.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-camera"></i></div>
+                    <h3>Vondsten vastleggen</h3>
+                    <p>Foto's, beschrijving, periode en vindplaats in &eacute;&eacute;n scherm, met automatische GPS-locatie en makkelijk terugvindbaar.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>Over Zoekapp</h3>
+    <!-- How it works -->
+    <section class="section how" id="zo-werkt-het">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow">Zo werkt het</span>
+                <h2>Van bodemvondst tot officieel gemeld</h2>
+                <p>Drie stappen, geen overtypen.</p>
+            </div>
+            <div class="how-steps reveal-group">
+                <div class="how-step reveal">
+                    <h3>Vondst vastleggen</h3>
+                    <p>Maak een foto, beschrijf de vondst en de locatie wordt automatisch bepaald op de kaart.</p>
+                </div>
+                <div class="how-step reveal">
+                    <h3>Organiseren</h3>
+                    <p>Koppel de vondst aan een perceel, houd de eigenaar op de hoogte en bouw je eigen archief op.</p>
+                </div>
+                <div class="how-step reveal">
+                    <h3>Melden bij PAN</h3>
+                    <p>Met &eacute;&eacute;n tik meld je de vondst bij PAN en volg je de status tot deze gevalideerd is.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Field moment -->
+    <section class="field-moment reveal">
+        <img src="images/header.jpg" alt="Groep zoekers tijdens een gezamenlijke metaaldetectie-rally op het veld">
+        <div class="field-moment-caption container">
+            <span class="eyebrow">In het veld</span>
+            <p>Gemaakt voor dagen zoals deze: samen het veld op, vondsten vastleggen zodra je ze uit de grond haalt.</p>
+        </div>
+    </section>
+
+    <!-- Screenshots -->
+    <section class="section">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow">In de app</span>
+                <h2>Een kijkje in Zoekapp</h2>
+            </div>
+            <div class="screenshot-grid reveal-group">
+                <div class="screenshot reveal">
+                    <div class="screenshot-phone">
+                        <div class="screenshot-phone-screen">
+                            <img src="images/vondst-invoeren-kaart.jpg" alt="Vondst invoeren: kaartlagen">
+                        </div>
+                    </div>
+                    <p>Vondst invoeren op de kaart</p>
+                </div>
+                <div class="screenshot reveal">
+                    <div class="screenshot-phone">
+                        <div class="screenshot-phone-screen">
+                            <img src="images/vondst-invoeren.jpg" alt="Vondst invoeren interface">
+                        </div>
+                    </div>
+                    <p>Vondst invoeren</p>
+                </div>
+                <div class="screenshot reveal">
+                    <div class="screenshot-phone">
+                        <div class="screenshot-phone-screen">
+                            <img src="images/vondsten.jpg" alt="Vondsten overzicht">
+                        </div>
+                    </div>
+                    <p>Overzicht van al je vondsten</p>
+                </div>
+                <div class="screenshot reveal">
+                    <div class="screenshot-phone">
+                        <div class="screenshot-phone-screen">
+                            <img src="images/vondst-detail.jpg" alt="Vondst detail">
+                        </div>
+                    </div>
+                    <p>Vondstdetails</p>
+                </div>
+                <div class="screenshot reveal">
+                    <div class="screenshot-phone">
+                        <div class="screenshot-phone-screen">
+                            <img src="images/melden.jpg" alt="PAN Melden-tabblad">
+                        </div>
+                    </div>
+                    <p>Rechtstreeks melden bij PAN</p>
+                </div>
+                <div class="screenshot reveal">
+                    <div class="screenshot-phone">
+                        <div class="screenshot-phone-screen">
+                            <img src="images/kaart-vondsten.jpg" alt="Vondstenkaart met clusters">
+                        </div>
+                    </div>
+                    <p>Vondsten en percelen op de kaart</p>
+                </div>
+                <div class="screenshot reveal">
+                    <div class="screenshot-phone">
+                        <div class="screenshot-phone-screen">
+                            <img src="images/percelen-info.jpg" alt="Perceelbeheer">
+                        </div>
+                    </div>
+                    <p>Perceelbeheer</p>
+                </div>
+                <div class="screenshot reveal">
+                    <div class="screenshot-phone">
+                        <div class="screenshot-phone-screen">
+                            <img src="images/percelen-fotos.jpg" alt="Perceelfoto's">
+                        </div>
+                    </div>
+                    <p>Foto's per perceel</p>
+                </div>
+                <div class="screenshot reveal">
+                    <div class="screenshot-phone">
+                        <div class="screenshot-phone-screen">
+                            <img src="images/helpfunctie.jpg" alt="Helpfunctie in de app">
+                        </div>
+                    </div>
+                    <p>Uitleg op elk scherm</p>
+                </div>
+                <div class="screenshot reveal">
+                    <div class="screenshot-phone">
+                        <div class="screenshot-phone-screen">
+                            <img src="images/galerij.jpg" alt="Fotogalerij">
+                        </div>
+                    </div>
+                    <p>Fotogalerij</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <section class="section partners">
+        <div class="container">
+            <div class="section-head reveal">
+                <span class="eyebrow">Rechtstreekse koppeling</span>
+                <h2>Vondsten die tellen voor de wetenschap</h2>
+                <p>Zoekapp is rechtstreeks gekoppeld aan PAN, de hoofddatabase voor archeologische vondsten in Nederland.</p>
+            </div>
+            <div class="partner-grid partner-grid-single reveal">
+                <a class="partner-card partner-card-featured" href="https://www.portable-antiquities.nl/" target="_blank">
+                    <i class="fas fa-database"></i>
+                    <h4>PAN (Portable Antiquities of the Netherlands)</h4>
+                    <span>Inloggen, melden en de status volgen doe je rechtstreeks vanuit de app.</span>
+                </a>
+            </div>
+            <p class="partner-note reveal">Voor muntvondsten stuurt PAN gegevens automatisch door aan <a href="https://muntvondsten.dnb.nl/#/" target="_blank">Numis</a>; apart melden daar is niet nodig. <a href="https://formulier.cultureelerfgoed.nl/archis/vondstmeldingsformulier" target="_blank">Archis</a> (RCE) is het register voor professionele archeologie; voor particuliere zoekers wordt PAN het enige officiële meldpunt. Numis en Archis zijn niet rechtstreeks gekoppeld aan de app.</p>
+        </div>
+    </section>
+
+    <!-- CTA / download -->
+    <section class="cta" id="download">
+        <div class="container reveal">
+            <h2>Probeer Zoekapp als eerste</h2>
+            <p>De app is momenteel tussen testversies in. Zodra iOS en Android weer beschikbaar zijn, vind je hier de downloadlinks.</p>
+            <div class="store-buttons">
+                <div class="store-btn disabled" aria-disabled="true">
+                    <small>Binnenkort beschikbaar</small>
+                    <strong><i class="fab fa-apple"></i> iOS</strong>
+                </div>
+                <div class="store-btn disabled" aria-disabled="true">
+                    <small>Binnenkort beschikbaar</small>
+                    <strong><i class="fab fa-google-play"></i> Android</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">
+                    <img src="images/icoon-zoekapp.png" alt="Zoekapp logo">
+                    Zoekapp
+                </div>
+                <p style="color: rgba(255,255,255,0.65); font-size: 0.95rem; max-width: 280px;">De app voor wie metaaldetectie serieus neemt: vondsten vastleggen, percelen beheren en rechtstreeks melden bij PAN.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Zoekapp</h3>
                 <ul>
-                    <li><a href="pages/over-ons.html" target="_blank"><i class="fas fa-angle-right"></i>Over ons</a></li>
-                    <li><a href="pages/privacy.html" target="_blank"><i class="fas fa-angle-right"></i>Privacy beleid</a></li>
-                    <li><a href="pages/voorwaarden.html" target="_blank"><i class="fas fa-angle-right"></i>Gebruiksvoorwaarden</a></li>
+                    <li><a href="pages/over-ons.html">Over ons</a></li>
+                    <li><a href="pages/faq.html">Veelgestelde vragen</a></li>
+                    <li><a href="documents/gebruikershandleiding.pdf" target="_blank">Gebruikershandleiding</a></li>
                 </ul>
             </div>
-            
-            <div class="footer-section">
-                <h3>Officiële Partners</h3>
+            <div class="footer-col">
+                <h3>Meldpunten</h3>
                 <ul>
-                    <li><a href="https://portable-antiquities.nl/panapp/" target="_blank"><i class="fas fa-angle-right"></i>PAN Database</a></li>
-                    <li><a href="https://muntvondsten.dnb.nl/#/" target="_blank"><i class="fas fa-angle-right"></i>Numis</a></li>
-                    <li><a href="https://formulier.cultureelerfgoed.nl/archis/vondstmeldingsformulier" target="_blank"><i class="fas fa-angle-right"></i>Archis</a></li>
+                    <li><a href="https://www.portable-antiquities.nl/" target="_blank">PAN Database (gekoppeld)</a></li>
+                    <li><a href="https://muntvondsten.dnb.nl/#/" target="_blank">Numis</a></li>
+                    <li><a href="https://formulier.cultureelerfgoed.nl/archis/vondstmeldingsformulier" target="_blank">Archis (professionele archeologie)</a></li>
                 </ul>
             </div>
-            
-            <div class="footer-section">
+            <div class="footer-col">
                 <h3>Ondersteuning</h3>
                 <ul>
-                    <li><a href="pages/faq.html" target="_blank"><i class="fas fa-angle-right"></i>Veelgestelde vragen</a></li>
-                    <li><a href="documents/gebruikershandleiding.pdf" target="_blank"><i class="fas fa-angle-right"></i>Gebruikershandleiding</a></li>
-                    <li><a href="mailto:otorenbosch.developer@gmail.com"><i class="fas fa-angle-right"></i>Contact</a></li>
+                    <li><a href="mailto:otorenbosch.developer@gmail.com">Contact</a></li>
+                    <li><a href="pages/privacy.html">Privacybeleid</a></li>
+                    <li><a href="pages/voorwaarden.html">Gebruiksvoorwaarden</a></li>
                 </ul>
             </div>
         </div>
-        
         <div class="footer-bottom">
-            <p>&copy; 2025 Zoekapp. Alle rechten voorbehouden.</p>
-            <p>Ontwikkeld met <i class="fas fa-heart" style="color: var(--accent-color);"></i> voor de metaaldetectie gemeenschap</p>
-            <p>
-                <a href="pages/privacy.html" target="_blank">Privacybeleid</a> |
-                <a href="pages/voorwaarden.html"target="_blank">Gebruiksvoorwaarden</a>
-            </p>
+            <p>&copy; 2026 Zoekapp. Alle rechten voorbehouden.</p>
+            <p>Ontwikkeld voor de metaaldetectie-gemeenschap</p>
         </div>
     </footer>
+
+    <script src="js/nav.js"></script>
+    <script src="js/reveal.js"></script>
+    <script src="js/hero-tilt.js"></script>
 </body>
 </html>

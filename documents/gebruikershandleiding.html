@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Gebruikershandleiding Zoekapp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    :root {
+        --primary: #2C6693;
+        --primary-dark: #1B4966;
+        --bronze: #B9793B;
+        --bronze-dark: #96602C;
+        --bronze-light: #F5E9D8;
+        --parchment: #FAF7F1;
+        --ink: #23302F;
+        --ink-soft: #56645F;
+        --line: rgba(35, 48, 47, 0.15);
+        --font-display: 'Fraunces', Georgia, serif;
+        --font-body: 'Inter', -apple-system, sans-serif;
+    }
+
+    @page {
+        size: A4;
+        margin: 22mm 18mm 20mm;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        font-family: var(--font-body);
+        color: var(--ink);
+        line-height: 1.55;
+        margin: 0;
+        font-size: 10.5pt;
+    }
+
+    .cover {
+        height: 245mm;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        page-break-after: always;
+    }
+
+    .cover .eyebrow {
+        font-size: 9pt;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--bronze-dark);
+        margin-bottom: 0.8rem;
+    }
+
+    .cover h1 {
+        font-family: var(--font-display);
+        font-size: 34pt;
+        color: var(--primary-dark);
+        margin: 0 0 0.4rem;
+        line-height: 1.1;
+    }
+
+    .cover .sub {
+        font-size: 12pt;
+        color: var(--ink-soft);
+        max-width: 380px;
+        margin-bottom: 2.5rem;
+    }
+
+    .cover .meta {
+        font-size: 9pt;
+        color: var(--ink-soft);
+        border-top: 1px solid var(--line);
+        padding-top: 0.8rem;
+        max-width: 320px;
+    }
+
+    .toc {
+        page-break-after: always;
+    }
+
+    .toc h2 {
+        font-family: var(--font-display);
+        color: var(--primary-dark);
+        font-size: 18pt;
+        border-bottom: 2px solid var(--bronze);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .toc ol {
+        list-style: none;
+        counter-reset: chapter;
+        padding: 0;
+        margin: 0;
+        columns: 2;
+        column-gap: 2.4rem;
+    }
+
+    .toc > ol > li {
+        counter-increment: chapter;
+        font-weight: 700;
+        font-size: 10.5pt;
+        margin-bottom: 0.6rem;
+        color: var(--ink);
+        break-inside: avoid;
+    }
+
+    .toc > ol > li::before {
+        content: counter(chapter) ". ";
+        color: var(--bronze-dark);
+    }
+
+    .toc ul {
+        list-style: none;
+        padding-left: 1.3rem;
+        margin: 0.3rem 0 0;
+        font-weight: 400;
+        font-size: 9pt;
+        color: var(--ink-soft);
+    }
+
+    .toc ul li {
+        margin-bottom: 0.15rem;
+    }
+
+    section.chapter {
+        break-before: page;
+    }
+
+    section.chapter:first-of-type {
+        break-before: auto;
+    }
+
+    h2.chapter-title {
+        page-break-after: avoid;
+        font-family: var(--font-display);
+        font-size: 19pt;
+        color: var(--primary-dark);
+        border-bottom: 2px solid var(--bronze);
+        padding-bottom: 0.4rem;
+        margin: 0 0 1rem;
+    }
+
+    h3 {
+        font-family: var(--font-body);
+        font-size: 12pt;
+        font-weight: 700;
+        color: var(--primary);
+        page-break-after: avoid;
+        margin: 1.6rem 0 0.6rem;
+    }
+
+    p { margin: 0 0 0.7rem; }
+
+    ul, ol {
+        margin: 0 0 0.9rem;
+        padding-left: 1.3rem;
+    }
+
+    li { margin-bottom: 0.35rem; }
+
+    strong { color: var(--ink); }
+
+    .note {
+        background: var(--bronze-light);
+        border: 1px solid rgba(185, 121, 59, 0.3);
+        border-radius: 6px;
+        padding: 0.7rem 1rem;
+        margin: 0.8rem 0;
+        font-size: 9.5pt;
+        page-break-inside: avoid;
+    }
+
+    .legend {
+        page-break-inside: avoid;
+    }
+
+    .note strong { color: var(--bronze-dark); }
+
+    .legend {
+        list-style: none;
+        padding: 0;
+        margin: 0.6rem 0 1rem;
+    }
+
+    .legend li {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-bottom: 0.4rem;
+        font-size: 9.8pt;
+    }
+
+    .dot {
+        width: 11px;
+        height: 11px;
+        border-radius: 50%;
+        display: inline-block;
+        flex-shrink: 0;
+    }
+
+    .swatch {
+        width: 18px;
+        height: 12px;
+        border-radius: 2px;
+        display: inline-block;
+        flex-shrink: 0;
+        border: 2px solid;
+    }
+
+    footer.page-footer {
+        font-size: 8pt;
+        color: var(--ink-soft);
+        text-align: center;
+        margin-top: 2rem;
+    }
+</style>
+</head>
+<body>
+
+<div class="cover">
+    <div class="eyebrow">Handleiding</div>
+    <h1>Gebruikershandleiding<br>Zoekapp</h1>
+    <p class="sub">Alles wat je moet weten over vondsten vastleggen, percelen beheren en rechtstreeks melden bij PAN.</p>
+    <div class="meta">Bijgewerkt: augustus 2026 &middot; www.zoek-app.nl</div>
+</div>
+
+<div class="toc">
+    <h2>Inhoudsopgave</h2>
+    <ol>
+        <li>Invoeren
+            <ul>
+                <li>Locatie vastleggen</li>
+                <li>Vondstinformatie</li>
+                <li>Perceel en eigenaar</li>
+                <li>Foto's toevoegen</li>
+                <li>Vondst opslaan</li>
+            </ul>
+        </li>
+        <li>Vondsten
+            <ul>
+                <li>Zoeken en filteren</li>
+                <li>PAN-status</li>
+                <li>Beschikbare acties</li>
+                <li>Back-up beheer</li>
+            </ul>
+        </li>
+        <li>Percelen
+            <ul>
+                <li>Overzicht en filteren</li>
+                <li>Eigenaarsbeheer</li>
+                <li>Statistieken en status</li>
+                <li>Navigatie en kaartweergave</li>
+                <li>Foto's per perceel</li>
+            </ul>
+        </li>
+        <li>Kaart
+            <ul>
+                <li>Markers en periodes</li>
+                <li>Percelen weergave</li>
+                <li>Archeologische gebieden</li>
+                <li>Navigatie en interactie</li>
+            </ul>
+        </li>
+        <li>Galerij</li>
+        <li>Melden bij PAN
+            <ul>
+                <li>Inloggen</li>
+                <li>Een vondst melden</li>
+                <li>Status volgen</li>
+                <li>Vondsten importeren</li>
+                <li>Handmatig een PAN-nummer invoeren</li>
+                <li>Vondst bekijken op PAN</li>
+                <li>Een vondst bewust niet melden</li>
+                <li>Numis en Archis</li>
+            </ul>
+        </li>
+        <li>Helpfunctie</li>
+    </ol>
+</div>
+
+<section class="chapter">
+    <h2 class="chapter-title">1. Invoeren</h2>
+    <p>Voor het registreren van een nieuwe vondst op het scherm Vondst invoeren doorloop je de volgende stappen:</p>
+
+    <h3>Locatie vastleggen</h3>
+    <ul>
+        <li>De locatie wordt automatisch bepaald door de GPS van je telefoon</li>
+        <li>Zoek op adres of pas de locatie handmatig aan</li>
+        <li>Switch eventueel van kaartlaag om de locatie beter te kunnen zien</li>
+        <li>Gebruik de locatieknop om je locatie opnieuw op te halen</li>
+        <li>De kaart toont dezelfde informatieve lagen als de vondstenkaart: percelen (groen = met eigenaar, oranje = zonder eigenaar) en archeologische gebieden (paars = interessant, rood = beschermd), zodra je ver genoeg inzoomt (zie hoofdstuk 4 voor de volledige legenda)</li>
+        <li>Klik je op een nog onbekend perceel, dan kun je kiezen tussen vondst invoeren of eerst het perceel vastleggen</li>
+    </ul>
+
+    <h3>Vondstinformatie</h3>
+    <ul>
+        <li>Selecteer de vondstdatum (standaard vandaag)</li>
+        <li>Kies de historische periode</li>
+        <li>Selecteer de hoofdcategorie (Munten of Voorwerpen)</li>
+        <li>Kies een specifieke subcategorie</li>
+        <li>Selecteer de locatie waar je de vondst hebt gedaan</li>
+        <li>Voeg een duidelijke omschrijving toe</li>
+    </ul>
+
+    <h3>Perceel en eigenaar</h3>
+    <p>Bij het klikken op de kaart of bij het opslaan van een vondst kun je:</p>
+    <ul>
+        <li>Het kadastrale perceel automatisch vastleggen</li>
+        <li>Een eigenaar koppelen aan het perceel uit je contactenlijst</li>
+        <li>Een nieuw contact aanmaken binnen de app</li>
+    </ul>
+
+    <h3>Foto's toevoegen</h3>
+    <ul>
+        <li>Je kunt maximaal 2 foto's per vondst toevoegen</li>
+        <li>Maak direct een foto met je camera, of kies een bestaande foto uit je galerij</li>
+    </ul>
+
+    <h3>Vondst opslaan</h3>
+    <p>Tik op de knop <strong>Vondst opslaan</strong> om de vondst te bewaren op je telefoon.</p>
+</section>
+
+<section class="chapter">
+    <h2 class="chapter-title">2. Vondsten</h2>
+    <p>Het scherm Mijn vondsten toont een overzicht van al je geregistreerde vondsten.</p>
+
+    <h3>Zoeken en filteren</h3>
+    <ul>
+        <li>Gebruik de zoekbalk om specifieke vondsten te vinden</li>
+        <li>Filter je vondsten op periode en type</li>
+        <li>Tik op een vondst om alle details te bekijken</li>
+    </ul>
+
+    <h3>PAN-status</h3>
+    <p>Onder elke vondst staat een gekleurd label met de PAN-status:</p>
+    <ul class="legend">
+        <li><span class="dot" style="background:#9E9E9E"></span> Grijs: nog melden</li>
+        <li><span class="dot" style="background:#FB8C00"></span> Oranje: in wachtrij (gemeld, wacht op verwerking)</li>
+        <li><span class="dot" style="background:#2C6693"></span> Blauw: in behandeling bij PAN, of een handmatig ingevoerd PAN-nummer</li>
+        <li><span class="dot" style="background:#43A047"></span> Groen: gevalideerd door PAN</li>
+        <li><span class="dot" style="background:#795548"></span> Bruin: "Wordt niet gemeld" (je hebt bewust gekozen deze vondst niet aan te melden)</li>
+    </ul>
+    <p>Tik op een teller op het tabblad Melden (Niet gemeld, In wachtrij of Gevalideerd) om op dit scherm meteen alleen vondsten met die status te zien. Het blauwe balkje bovenaan toont het actieve filter; tik op "Wissen" om het weg te halen.</p>
+
+    <h3>Beschikbare acties</h3>
+    <p>Het detailscherm toont alle informatie over een specifieke vondst. Vanaf hier kun je:</p>
+    <ul>
+        <li>Een foto van je vondst delen met anderen</li>
+        <li>De gegevens van je vondst aanpassen</li>
+        <li>Navigeren naar de vindplaats van de vondst</li>
+        <li>Naar het perceel gaan waar deze vondst is gedaan</li>
+        <li>De vondst melden bij PAN of de status volgen (zie hoofdstuk 6)</li>
+        <li>Bij een gevalideerde vondst: de publieke PAN-pagina van je vondst openen</li>
+        <li>Een vondst markeren als "Wordt niet gemeld", bijvoorbeeld omdat die is vernietigd</li>
+        <li>De vondst verwijderen uit je verzameling</li>
+    </ul>
+
+    <h3>Back-up beheer</h3>
+    <p>Via het menu rechtsboven kun je:</p>
+    <ul>
+        <li>Een back-up maken van je vondsten (inclusief foto's)</li>
+        <li>Een eerder gemaakte back-up terugzetten</li>
+    </ul>
+    <div class="note"><strong>Tip:</strong> maak regelmatig een back-up, zeker voor je de app bijwerkt of van toestel wisselt.</div>
+</section>
+
+<section class="chapter">
+    <h2 class="chapter-title">3. Percelen</h2>
+    <p>Het scherm Percelen biedt geavanceerd beheer van kadastrale percelen waar je vondsten hebt gedaan. Deze functie is vooral nuttig voor het professioneel organiseren van je zoekgebieden.</p>
+
+    <h3>Overzicht en filteren</h3>
+    <ul>
+        <li>Alle percelen worden weergegeven met gemeente, sectie en nummer</li>
+        <li>Gebruik de zoekbalk om specifieke percelen te vinden</li>
+        <li>Filter percelen op: alle percelen, met/zonder eigenaar, met/zonder vondsten, onderzocht/niet onderzocht</li>
+        <li>Sorteer percelen op naam, aantal vondsten of laatste vondst</li>
+    </ul>
+
+    <h3>Eigenaarsbeheer</h3>
+    <p>Eigenaren toevoegen gaat als volgt:</p>
+    <ul>
+        <li>Ga naar het percelenscherm</li>
+        <li>Zoek het gewenste perceel en tik erop om uit te klappen</li>
+        <li>Tik op "Voeg eigenaar toe"</li>
+        <li>Kies een bestaand contact uit je telefoon of maak een nieuw contact aan</li>
+        <li>De eigenaar wordt gekoppeld en je kunt direct bellen of appen</li>
+    </ul>
+    <p>Je kunt eigenaarsinformatie op elk moment wijzigen of verwijderen.</p>
+
+    <h3>Statistieken en status</h3>
+    <p>Per perceel zie je:</p>
+    <ul>
+        <li>Totaal aantal vondsten op dat perceel</li>
+        <li>Verdeling van vondsten over historische periodes</li>
+        <li>Datum van de laatste vondst</li>
+        <li>Of het perceel als "onderzocht" is gemarkeerd</li>
+        <li>Aantal algemene perceelfoto's</li>
+    </ul>
+    <p>Deze informatie helpt je te bepalen welke percelen het meest productief zijn en waar je nog terug zou willen komen.</p>
+
+    <h3>Navigatie en kaartweergave</h3>
+    <p>Er zijn drie manieren om vanuit een perceel verder te gaan:</p>
+    <ul>
+        <li><strong>Op kaart bekijken:</strong> tik op het kaart-icoon om het perceel te bekijken op de vondstenkaart met exacte grenzen</li>
+        <li><strong>Vondsten:</strong> tik op het munt-icoon om alle vondsten te bekijken die je op dit perceel hebt gedaan, en open er direct een</li>
+        <li><strong>Navigeren:</strong> tik op het navigatie-icoon om Google Maps te openen naar het middelpunt van het perceel (werkt op zowel iOS als Android)</li>
+    </ul>
+
+    <h3>Foto's per perceel</h3>
+    <ul>
+        <li>Voeg algemene foto's toe van het perceel (landschap, toegang, etc.)</li>
+        <li>Bekijk alle perceelfoto's in een overzichtelijke galerij</li>
+        <li>Voeg per foto of groep foto's een notitie toe</li>
+        <li>Onderscheid tussen vondstfoto's en perceelfoto's</li>
+    </ul>
+</section>
+
+<section class="chapter">
+    <h2 class="chapter-title">4. Kaart</h2>
+    <p>De vondstenkaart geeft een visueel overzicht van al je vondstlocaties.</p>
+
+    <h3>Markers en periodes</h3>
+    <p>Elke vondst wordt weergegeven met een gekleurd icoon dat de periode aangeeft:</p>
+    <ul class="legend">
+        <li><span class="dot" style="background:#8B5E3C"></span> Steentijd</li>
+        <li><span class="dot" style="background:#D98A2B"></span> Bronstijd</li>
+        <li><span class="dot" style="background:#8C8C8C"></span> IJzertijd / Keltisch</li>
+        <li><span class="dot" style="background:#C0392B"></span> Romeinse tijd</li>
+        <li><span class="dot" style="background:#3E8E5A"></span> Middeleeuwen</li>
+        <li><span class="dot" style="background:#2C6693"></span> Nieuwe tijd</li>
+        <li><span class="dot" style="background:#8E5FA8"></span> Onbekend</li>
+    </ul>
+
+    <h3>Percelen weergave</h3>
+    <p>Percelen worden weergegeven met een gekleurde omlijning:</p>
+    <ul class="legend">
+        <li><span class="swatch" style="border-color:#E08A2C"></span> Perceel zonder eigenaar</li>
+        <li><span class="swatch" style="border-color:#3E8E5A"></span> Perceel met eigenaar</li>
+    </ul>
+    <p>De rand van een perceel geeft aan of je er al hebt gezocht:</p>
+    <ul class="legend">
+        <li><svg width="26" height="16" style="flex-shrink:0"><rect x="2" y="2" width="22" height="12" fill="none" stroke="#23302F" stroke-width="2"/></svg> Onderzocht</li>
+        <li><svg width="26" height="16" style="flex-shrink:0"><rect x="2" y="2" width="22" height="12" fill="none" stroke="#23302F" stroke-width="2" stroke-dasharray="4 3"/></svg> Niet onderzocht</li>
+    </ul>
+    <p>Tik op een perceel-omlijning om naar de percelenpagina te navigeren.</p>
+
+    <h3>Archeologische gebieden</h3>
+    <p>Archeologische gebieden worden zichtbaar wanneer je ver genoeg inzoomt:</p>
+    <ul class="legend">
+        <li><span class="swatch" style="border-color:#8E5FA8"></span> Archeologisch interessant</li>
+        <li><span class="swatch" style="border-color:#C0392B"></span> Beschermd (verboden)</li>
+    </ul>
+    <p>Deze informatie helpt je te bepalen waar wel en niet gezocht mag worden volgens de Nederlandse wetgeving voor metaaldetectie.</p>
+
+    <h3>Navigatie en interactie</h3>
+    <ul>
+        <li>Meerdere vondsten in hetzelfde gebied worden gegroepeerd met een getal dat aangeeft hoeveel vondsten er op die locatie zijn (clusters)</li>
+        <li>Je huidige locatie wordt weergegeven met een blauwe stip; de knop rechtsonder centreert de kaart weer op je eigen locatie</li>
+        <li>Tik op een marker om de details van de vondst te bekijken</li>
+        <li>Tik op een perceel (gekleurde omlijning) om naar de percelenpagina te navigeren</li>
+        <li>Gebruik knijp- en spreidbewegingen om in- en uit te zoomen</li>
+    </ul>
+</section>
+
+<section class="chapter">
+    <h2 class="chapter-title">5. Galerij</h2>
+    <p>De galerij toont alle foto's van je vondsten.</p>
+
+    <h3>Navigatie</h3>
+    <ul>
+        <li>Veeg naar links of rechts om door je foto's te bladeren</li>
+        <li>Foto's staan standaard gesorteerd van nieuw naar oud</li>
+        <li>Tik op een foto om deze in volledig scherm te bekijken</li>
+    </ul>
+
+    <h3>Foto beheer</h3>
+    <ul>
+        <li>Markeer belangrijke vondsten als favoriet</li>
+        <li>Favoriete foto's verschijnen als eerste in de galerij</li>
+        <li>Gebruik knijp- en spreidbewegingen om in te zoomen op details</li>
+    </ul>
+</section>
+
+<section class="chapter">
+    <h2 class="chapter-title">6. Melden bij PAN</h2>
+    <p>Zoekapp is rechtstreeks gekoppeld aan PAN (Portable Antiquities of the Netherlands), de hoofddatabase voor archeologische vondsten in Nederland. Melden gaat rechtstreeks vanuit de app, zonder los in te loggen op een website.</p>
+
+    <h3>Inloggen</h3>
+    <ul>
+        <li>Ga naar het tabblad "Melden"</li>
+        <li>Log in met je eigen PAN-account (e-mailadres en wachtwoord)</li>
+        <li>Je inloggegevens worden veilig op je toestel bewaard, zodat je niet steeds opnieuw hoeft in te loggen</li>
+    </ul>
+
+    <h3>Een vondst melden</h3>
+    <ul>
+        <li>Open de vondst in het detailscherm</li>
+        <li>Tik op "Meld aan bij PAN"</li>
+        <li>Controleer de gegevens in de bevestiging: omschrijving, locatie en foto worden verstuurd</li>
+        <li>Tik op "Melden" om te bevestigen</li>
+    </ul>
+    <p>Na het melden staat de vondst "in de wachtrij" bij PAN. Zodra PAN de vondst verder heeft bekeken, verandert de status vanzelf. Waar mogelijk wordt ook het perceel automatisch meegekoppeld.</p>
+
+    <h3>Status volgen</h3>
+    <p>Op het tabblad "Melden" zie je in één overzicht:</p>
+    <ul>
+        <li><strong>Niet gemeld:</strong> vondsten die nog niet naar PAN zijn gestuurd</li>
+        <li><strong>In wachtrij:</strong> gemeld, maar nog niet gevalideerd</li>
+        <li><strong>Gevalideerd:</strong> door PAN goedgekeurd</li>
+    </ul>
+    <p>Tik op een van de tellers om direct naar de bijbehorende vondsten te springen.</p>
+
+    <h3>Vondsten importeren</h3>
+    <p>Heb je al vondsten bij PAN staan die nog niet in de app staan? Op het tabblad "Melden" zie je hoeveel PAN-vondsten nog niet zijn opgehaald. Tik op "Vondsten importeren" om ze in één keer toe te voegen aan je app.</p>
+
+    <h3>Handmatig een PAN-nummer invoeren</h3>
+    <p>Heb je een vondst al eerder los gemeld bij PAN, bijvoorbeeld via de website of door een mede-vinder? Vul dan het PAN-nummer in op het vondstdetailscherm. De app haalt automatisch op of de vondst al gevalideerd is. Tik op het nummer om het later te wijzigen.</p>
+
+    <h3>Vondst bekijken op PAN</h3>
+    <p>Zodra een vondst gevalideerd is, verschijnt op het detailscherm een link naar de publieke PAN-pagina van die vondst.</p>
+
+    <h3>Een vondst bewust niet melden</h3>
+    <p>Wil je een vondst niet aanmelden, bijvoorbeeld omdat deze is vernietigd? Markeer hem op het detailscherm als "Niet melden". Hij krijgt dan het label "Wordt niet gemeld" en telt niet meer mee bij "nog melden".</p>
+
+    <h3>Numis en Archis</h3>
+    <p>Voor muntvondsten stuurt PAN de gegevens automatisch door naar Numis; apart melden is niet nodig. Archis (RCE) is het register voor professionele archeologie (waarnemingen en onderzoeken door bedrijven); PAN wordt het enige officiële meldpunt voor vondsten van particuliere zoekers.</p>
+    <div class="note"><strong>Let op:</strong> Numis en Archis zijn niet rechtstreeks gekoppeld aan de app zoals PAN dat wel is.</div>
+</section>
+
+<section class="chapter">
+    <h2 class="chapter-title">7. Helpfunctie</h2>
+    <p>Op iedere pagina van de app staat rechtsboven een vraagteken. Tik op dit vraagteken om uitleg te krijgen die specifiek bij dat scherm hoort.</p>
+</section>
+
+</body>
+</html>

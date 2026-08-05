@@ -3,130 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Over Zoekapp - Leer meer over onze missie om metaaldetectie te digitaliseren en historie te bewaren">
-    <title>Over Ons - Zoekapp</title>
+    <meta name="description" content="Over Zoekapp - Leer meer over onze missie om metaaldetectie te professionaliseren en erfgoed te bewaren.">
+    <title>Over ons - Zoekapp</title>
+    <link rel="icon" href="../images/icoon-zoekapp.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
     <style>
-        :root {
-            --primary-color: #2196F3;
-            --secondary-color: #1976D2;
-            --accent-color: #FFC107;
-            --text-color: #333;
-            --light-gray: #f5f5f5;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-        }
-
-        /* Header Sectie */
-        .page-header {
-            background: linear-gradient(-45deg, var(--primary-color), var(--secondary-color));
-            padding: 6rem 2rem;
-            color: white;
-            text-align: center;
-        }
-
-        .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .page-header p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            opacity: 0.9;
-        }
-
-        /* Missie Sectie */
         .mission {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            padding: 5.5rem 0;
         }
 
         .mission-grid {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.1fr 0.9fr;
             gap: 4rem;
             align-items: center;
         }
 
         .mission-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
+            font-size: clamp(1.9rem, 3.2vw, 2.3rem);
+            margin-bottom: 1.4rem;
         }
 
-        .mission-image {
-            position: relative;
+        .mission-content p {
+            color: var(--ink-soft);
+            margin-bottom: 1.1rem;
         }
 
         .mission-image img {
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
         }
 
-        /* Team Sectie */
         .team {
-            background: var(--light-gray);
-            padding: 6rem 2rem;
+            background: var(--parchment-alt);
+            padding: 5.5rem 0;
         }
 
-        .team-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .team h2 {
+        .team .section-head {
+            max-width: 640px;
+            margin: 0 auto 3rem;
             text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
         }
 
         .team-members {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 2rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .team-member {
-            background: white;
-            padding: 2rem;
-            border-radius: 16px;
+            background: var(--white);
+            padding: 2.2rem;
+            border-radius: var(--radius);
             text-align: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border: 1px solid var(--line);
         }
 
         .team-member img {
-            width: 150px;
-            height: 150px;
+            width: 130px;
+            height: 130px;
             border-radius: 50%;
-            margin-bottom: 1.5rem;
+            margin: 0 auto 1.4rem;
             object-fit: cover;
         }
 
         .team-member h3 {
-            color: var(--text-color);
-            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+            margin-bottom: 0.3rem;
         }
 
         .team-member p {
-            color: #666;
+            color: var(--ink-soft);
             margin-bottom: 1rem;
+            font-size: 0.95rem;
         }
 
         .social-links {
@@ -136,131 +95,186 @@
         }
 
         .social-links a {
-            color: var(--primary-color);
+            color: var(--primary);
             text-decoration: none;
-            font-size: 1.2rem;
-            transition: color 0.3s ease;
+            font-size: 1.1rem;
         }
 
         .social-links a:hover {
-            color: var(--secondary-color);
+            color: var(--primary-dark);
         }
 
-        /* Waarom Wij Sectie */
         .why-us {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .why-us h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
+            padding: 5.5rem 0;
         }
 
         .benefits {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.6rem;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .benefit {
             text-align: center;
-            padding: 2rem;
+            padding: 1.8rem;
         }
 
-        .benefit i {
-            font-size: 3rem;
-            color: var(--accent-color);
-            margin-bottom: 1.5rem;
+        .benefit .feature-icon {
+            margin: 0 auto 1.2rem;
         }
 
         .benefit h3 {
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
         }
 
-        @media (max-width: 768px) {
+        .benefit p {
+            color: var(--ink-soft);
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 860px) {
             .mission-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .page-header h1 {
-                font-size: 2.5rem;
-            }
-
-            .mission-content h2 {
-                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
+    <header class="site-header">
+        <nav class="nav">
+            <a href="../index.html" class="nav-brand">
+                <img src="../images/icoon-zoekapp.png" alt="Zoekapp logo">
+                Zoekapp
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html#functies">Functies</a></li>
+                <li><a href="../index.html#zo-werkt-het">Zo werkt het</a></li>
+                <li><a href="over-ons.html">Over ons</a></li>
+                <li><a href="faq.html">Veelgestelde vragen</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+                <a href="../index.html#download" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a>
+            </div>
+        </nav>
+    </header>
+
     <header class="page-header">
-        <h1>Over Zoekapp</h1>
-        <p>Wij digitaliseren metaaldetectie en maken geschiedenis toegankelijk voor iedereen</p>
+        <span class="eyebrow">Over Zoekapp</span>
+        <h1>Metaaldetectie professioneel op de kaart</h1>
+        <p>Zoekapp is ontstaan uit een passie voor geschiedenis en techniek, en de wens om vondsten net zo serieus te behandelen als de zoektocht ernaar.</p>
     </header>
 
     <section class="mission">
-        <div class="mission-grid">
+        <div class="mission-grid reveal">
             <div class="mission-content">
-                <h2>Onze Missie</h2>
-                <p>Zoekapp is ontstaan uit een passie voor geschiedenis en technologie. We geloven dat elke vondst een verhaal vertelt en dat deze verhalen het waard zijn om bewaard en gedeeld te worden.</p>
-                <p>Onze missie is om metaaldetectie te professionaliseren door zoekers de tools te bieden die ze verdienen. We maken het vastleggen van vondsten eenvoudig en zorgen ervoor dat belangrijke historische ontdekkingen niet verloren gaan.</p>
-                <p>Door samen te werken met officiële instanties zoals PAN, Numis en Archis, dragen we bij aan het behoud van ons cultureel erfgoed en maken we geschiedenis toegankelijk voor toekomstige generaties.</p>
+                <h2>Onze missie</h2>
+                <p>Elke vondst vertelt een verhaal. Wij geloven dat die verhalen het waard zijn om vastgelegd, gedeeld en bewaard te worden, niet ergens in een schoenendoos maar op een manier die klopt: met locatie, foto's en context.</p>
+                <p>Zoekapp helpt zoekers om hun hobby professioneler aan te pakken: vondsten vastleggen op de kaart, percelen en grondeigenaren bijhouden, en vondsten rechtstreeks melden bij de officiële instanties die ze nodig hebben voor onderzoek.</p>
+                <p>Door direct te koppelen met PAN dragen we bij aan het behoud van cultureel erfgoed, zonder dat melden een aparte klus wordt naast het zoeken zelf.</p>
             </div>
             <div class="mission-image">
-                <img src="/images/gertenotto.jpg" alt="Metaaldetectie in actie">
+                <img src="../images/gertenotto.jpg" alt="Metaaldetectie in actie">
             </div>
         </div>
     </section>
 
     <section class="team">
-        <div class="team-container">
-            <h2>Ons Team</h2>
-            <div class="team-members">
-                <div class="team-member">
-                    <img src="/images/otto.jpg" alt="Team member">
-                    <h3>Otto Torenbosch</h3>
-                    <p>Oprichter & Ontwikkelaar</p>
-                    <div class="social-links">
-                        <a href="https://nl.linkedin.com/in/otto-torenbosch-2a225318"><i class="fab fa-linkedin"></i></a>
-                        <a href="mailto:otorenbosch.developer@gmail.com"><i class="fas fa-envelope"></i></a>
-                    </div>
+        <div class="section-head reveal">
+            <span class="eyebrow">Het team</span>
+            <h2>Wie er achter Zoekapp zit</h2>
+        </div>
+        <div class="team-members reveal-group">
+            <div class="team-member reveal">
+                <img src="../images/otto.jpg" alt="Otto Torenbosch">
+                <h3>Otto Torenbosch</h3>
+                <p>Oprichter &amp; ontwikkelaar</p>
+                <div class="social-links">
+                    <a href="https://nl.linkedin.com/in/otto-torenbosch-2a225318" target="_blank" aria-label="LinkedIn Otto Torenbosch"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:otorenbosch.developer@gmail.com" aria-label="E-mail Otto Torenbosch"><i class="fas fa-envelope"></i></a>
                 </div>
-                <div class="team-member">
-                    <img src="/images/gert.jpeg" alt="Team member">
-                    <h3>Gert Lugthart</h3>
-                    <p>Oprichter & Content Manager</p>
-                    <div class="social-links">
-                        <a href="https://nl.linkedin.com/in/gert-lugthart-81463919"><i class="fab fa-linkedin"></i></a>
-                        <a href="mailto:gertlugthart905@gmail.com"><i class="fas fa-envelope"></i></a>
-                    </div>
+            </div>
+            <div class="team-member reveal">
+                <img src="../images/gert.jpeg" alt="Gert Lugthart">
+                <h3>Gert Lugthart</h3>
+                <p>Oprichter &amp; content</p>
+                <div class="social-links">
+                    <a href="https://nl.linkedin.com/in/gert-lugthart-81463919" target="_blank" aria-label="LinkedIn Gert Lugthart"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:gertlugthart905@gmail.com" aria-label="E-mail Gert Lugthart"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="why-us">
-        <h2>Waarom Zoekapp?</h2>
-        <div class="benefits">
-            <div class="benefit">
-                <i class="fas fa-medal"></i>
-                <h3>Expertise</h3>
-                <p>Ons team combineert jarenlange ervaring in metaaldetectie met technische expertise</p>
+        <div class="section-head reveal">
+            <span class="eyebrow">Waarom Zoekapp</span>
+            <h2>Gebouwd door zoekers, voor zoekers</h2>
+        </div>
+        <div class="benefits reveal-group">
+            <div class="benefit reveal">
+                <div class="feature-icon"><i class="fas fa-medal"></i></div>
+                <h3>Ervaring uit het veld</h3>
+                <p>Ons team combineert jarenlange praktijkervaring in metaaldetectie met software-ontwikkeling.</p>
             </div>
-            <div class="benefit">
-                <i class="fas fa-handshake"></i>
+            <div class="benefit reveal">
+                <div class="feature-icon"><i class="fas fa-handshake"></i></div>
                 <h3>Samenwerking</h3>
-                <p>We werken nauw samen met officiële instanties en de zoekgemeenschap</p>
+                <p>We bouwen samen met de zoekgemeenschap en sluiten aan op de officiële meldpunten zoals PAN.</p>
             </div>
-            <div class="benefit">
-                <i class="fas fa-heart"></i>
-                <h3>Passie</h3>
-                <p>We delen dezelfde passie voor geschiedenis en metaaldetectie als onze gebruikers</p>
+            <div class="benefit reveal">
+                <div class="feature-icon"><i class="fas fa-heart"></i></div>
+                <h3>Passie voor geschiedenis</h3>
+                <p>We delen dezelfde nieuwsgierigheid naar wat er onder de grond ligt als onze gebruikers.</p>
             </div>
         </div>
     </section>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">
+                    <img src="../images/icoon-zoekapp.png" alt="Zoekapp logo">
+                    Zoekapp
+                </div>
+                <p style="color: rgba(255,255,255,0.65); font-size: 0.95rem; max-width: 280px;">De app voor wie metaaldetectie serieus neemt: vondsten vastleggen, percelen beheren en rechtstreeks melden bij PAN.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Zoekapp</h3>
+                <ul>
+                    <li><a href="over-ons.html">Over ons</a></li>
+                    <li><a href="faq.html">Veelgestelde vragen</a></li>
+                    <li><a href="../documents/gebruikershandleiding.pdf" target="_blank">Gebruikershandleiding</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Meldpunten</h3>
+                <ul>
+                    <li><a href="https://www.portable-antiquities.nl/" target="_blank">PAN Database (gekoppeld)</a></li>
+                    <li><a href="https://muntvondsten.dnb.nl/#/" target="_blank">Numis</a></li>
+                    <li><a href="https://formulier.cultureelerfgoed.nl/archis/vondstmeldingsformulier" target="_blank">Archis (professionele archeologie)</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Ondersteuning</h3>
+                <ul>
+                    <li><a href="mailto:otorenbosch.developer@gmail.com">Contact</a></li>
+                    <li><a href="privacy.html">Privacybeleid</a></li>
+                    <li><a href="voorwaarden.html">Gebruiksvoorwaarden</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Zoekapp. Alle rechten voorbehouden.</p>
+            <p>Ontwikkeld voor de metaaldetectie-gemeenschap</p>
+        </div>
+    </footer>
+
+    <script src="../js/nav.js"></script>
+    <script src="../js/reveal.js"></script>
 </body>
 </html>

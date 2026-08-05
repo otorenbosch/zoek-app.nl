@@ -3,206 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Privacy Beleid Zoekapp - Informatie over hoe wij omgaan met uw gegevens">
-    <title>Privacy Beleid - Zoekapp</title>
+    <meta name="description" content="Privacybeleid Zoekapp - informatie over welke gegevens de app verzamelt, wanneer deze met PAN worden gedeeld en hoe je ze beheert.">
+    <title>Privacybeleid - Zoekapp</title>
+    <link rel="icon" href="../images/icoon-zoekapp.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #2196F3;
-            --secondary-color: #1976D2;
-            --accent-color: #FFC107;
-            --text-color: #333;
-            --light-gray: #f5f5f5;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-        }
-
-        .page-header {
-            background: linear-gradient(-45deg, var(--primary-color), var(--secondary-color));
-            padding: 4rem 2rem;
-            color: white;
-            text-align: center;
-        }
-
-        .page-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .privacy-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .privacy-section {
-            margin-bottom: 3rem;
-        }
-
-        .privacy-section h2 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-        }
-
-        .privacy-section h3 {
-            color: var(--secondary-color);
-            margin: 1.5rem 0 1rem;
-            font-size: 1.3rem;
-        }
-
-        .privacy-section p {
-            margin-bottom: 1rem;
-        }
-
-        .privacy-section ul, .privacy-section ol {
-            margin-left: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .privacy-section li {
-            margin-bottom: 0.5rem;
-        }
-
-        .privacy-section strong {
-            color: var(--secondary-color);
-        }
-
-        .privacy-footer {
-            background: var(--light-gray);
-            padding: 2rem;
-            text-align: center;
-            margin-top: 4rem;
-        }
-
-        .last-updated {
-            color: #666;
-            font-style: italic;
-        }
-
-        a {
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 2rem;
-            }
-
-            .privacy-content {
-                padding: 2rem 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <header class="page-header">
-        <h1>Privacy Beleid Zoekapp</h1>
-        <p>Laatst bijgewerkt: 24 november 2024</p>
+    <header class="site-header">
+        <nav class="nav">
+            <a href="../index.html" class="nav-brand">
+                <img src="../images/icoon-zoekapp.png" alt="Zoekapp logo">
+                Zoekapp
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html#functies">Functies</a></li>
+                <li><a href="../index.html#zo-werkt-het">Zo werkt het</a></li>
+                <li><a href="over-ons.html">Over ons</a></li>
+                <li><a href="faq.html">Veelgestelde vragen</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><i class="fas fa-bars"></i></button>
+                <a href="../index.html#download" class="btn btn-primary btn-small"><i class="fas fa-download"></i> Download</a>
+            </div>
+        </nav>
     </header>
 
-    <main class="privacy-content">
-        <section class="privacy-section">
+    <header class="page-header">
+        <span class="eyebrow">Juridisch</span>
+        <h1>Privacybeleid Zoekapp</h1>
+        <p>Laatst bijgewerkt: 5 augustus 2026</p>
+    </header>
+
+    <main class="content">
+        <section class="content-section reveal">
             <h2>Inleiding</h2>
-            <p>Deze privacy policy is van toepassing op de Zoekapp (hierna: "de App"), ontwikkeld voor het registreren van metaaldetector vondsten. Wij hechten groot belang aan de privacy van onze gebruikers en zorgen ervoor dat de persoonlijke informatie die u ons verschaft vertrouwelijk wordt behandeld.</p>
+            <p>Dit privacybeleid is van toepassing op de Zoekapp (hierna: "de App"), ontwikkeld voor het registreren van metaaldetectorvondsten. We hechten groot belang aan jouw privacy en leggen hieronder precies uit welke gegevens de app verzamelt, wanneer deze het toestel verlaten en waarom.</p>
+            <div class="callout">
+                <strong>Kort samengevat:</strong> vondsten, foto's en locaties blijven standaard lokaal op je toestel. Alleen wanneer je zelf kiest om een vondst bij PAN te melden of te importeren, worden gegevens verstuurd naar de servers van PAN.
+            </div>
         </section>
 
-        <section class="privacy-section">
-            <h2>Welke gegevens verzamelen wij</h2>
-            <p>De App verzamelt en verwerkt de volgende gegevens:</p>
-            
+        <section class="content-section reveal">
+            <h2>Welke gegevens verzamelt de app</h2>
+
             <h3>Locatiegegevens</h3>
             <ul>
-                <li>GPS-coördinaten van vondstlocaties</li>
-                <li>Deze gegevens worden alleen verzameld wanneer u een vondst registreert</li>
-                <li>Deze coördinaten worden lokaal op uw apparaat opgeslagen</li>
+                <li>GPS-co&ouml;rdinaten van vondst- en perceellocaties, alleen verzameld wanneer je een vondst of perceel registreert</li>
+                <li>Lokaal op je toestel opgeslagen</li>
             </ul>
 
             <h3>Afbeeldingen</h3>
             <ul>
-                <li>Foto's die u maakt van uw vondsten</li>
-                <li>Deze worden lokaal op uw apparaat opgeslagen</li>
+                <li>Foto's die je maakt van vondsten en percelen (maximaal 2 per vondst)</li>
+                <li>Lokaal op je toestel opgeslagen, inclusief in de back-up die je zelf maakt</li>
             </ul>
 
-            <h3>Vondstgegevens</h3>
+            <h3>Vondst- en perceelgegevens</h3>
             <ul>
-                <li>Informatie over uw vondsten (datum, type, beschrijving)</li>
-                <li>Deze gegevens worden lokaal op uw apparaat opgeslagen</li>
+                <li>Beschrijving, datum, periode en type van je vondsten</li>
+                <li>Perceelinformatie en de status van onderzochte gebieden</li>
+                <li>Lokaal op je toestel opgeslagen</li>
             </ul>
-        </section>
 
-        <section class="privacy-section">
-            <h2>Hoe wij uw gegevens gebruiken</h2>
+            <h3>Contactgegevens van perceeleigenaren</h3>
             <ul>
-                <li>Alle verzamelde gegevens worden uitsluitend lokaal op uw apparaat opgeslagen</li>
-                <li>Er worden geen gegevens gedeeld met externe partijen</li>
-                <li>De gegevens worden alleen gebruikt voor het functioneren van de App</li>
+                <li>Met jouw toestemming krijgt de app lees- en schrijftoegang tot je telefooncontacten, om een eigenaar aan een perceel te kunnen koppelen</li>
+                <li>Deze koppeling blijft lokaal op je toestel; wij hebben hier geen inzage in en delen deze niet</li>
             </ul>
-        </section>
 
-        <section class="privacy-section">
-            <h2>Dataopslag en Beveiliging</h2>
+            <h3>PAN-inloggegevens</h3>
             <ul>
-                <li>Alle gegevens worden lokaal op uw apparaat opgeslagen</li>
-                <li>U kunt zelf een backup maken en beheren van uw gegevens</li>
-                <li>U kunt zelf de gegevens verwijderen van uw apparaat</li>
-                <li>Wij hebben geen toegang tot uw opgeslagen gegevens</li>
+                <li>Als je de PAN-koppeling gebruikt, worden je PAN-gebruikersnaam en wachtwoord veilig opgeslagen in de beveiligde sleutelopslag van je toestel (Keychain op iOS, Keystore op Android)</li>
+                <li>Wij hebben geen eigen server en dus geen toegang tot deze gegevens; ze worden uitsluitend gebruikt om rechtstreeks bij PAN in te loggen</li>
             </ul>
         </section>
 
-        <section class="privacy-section">
-            <h2>Google Maps</h2>
-            <p>De App maakt gebruik van Google Maps voor het weergeven van vondstlocaties. Hierbij zijn de privacy voorwaarden van Google van toepassing. Voor meer informatie verwijzen we naar het <a href="https://policies.google.com/privacy" target="_blank">privacy beleid van Google Maps</a>.</p>
+        <section class="content-section reveal">
+            <h2>Wanneer gegevens het toestel verlaten</h2>
+            <p>De app werkt standaard volledig lokaal. Gegevens worden alleen verzonden in de volgende gevallen:</p>
+
+            <h3>Melden of importeren via PAN</h3>
+            <p>Wanneer jij zelf een vondst meldt bij PAN of vondsten importeert vanuit je PAN-account, stuurt de app het volgende naar de servers van PAN (portable-antiquities.nl, beheerd door de Vrije Universiteit Amsterdam):</p>
+            <ul>
+                <li>Je PAN-inloggegevens, om de sessie tot stand te brengen</li>
+                <li>Beschrijving, periode, categorie en locatie van de gemelde vondst</li>
+                <li>De foto's die je aan de melding toevoegt</li>
+            </ul>
+            <p>Dit gebeurt uitsluitend op jouw initiatief, per vondst. Voor het gebruik van je gegevens door PAN zelf verwijzen we naar hun eigen voorwaarden, te vinden via <a href="https://www.portable-antiquities.nl/" target="_blank">portable-antiquities.nl</a>.</p>
+
+            <h3>Kaartweergave</h3>
+            <p>De kaart in de app laadt kaarttegels van ArcGIS Online (Esri). Hierbij worden technische verzoeken (zoals je IP-adres) verwerkt door Esri om de juiste kaarttegel terug te sturen, net als bij elke kaart-app. Er worden geen vondstgegevens met Esri gedeeld. Zie het <a href="https://www.esri.com/en-us/privacy/overview" target="_blank">privacybeleid van Esri</a> voor meer informatie.</p>
         </section>
 
-        <section class="privacy-section">
+        <section class="content-section reveal">
+            <h2>Dataopslag en beveiliging</h2>
+            <ul>
+                <li>Vondsten, foto's en percelen staan lokaal op je toestel, niet op een server van ons, want we hebben geen eigen backend</li>
+                <li>Je kunt zelf een back-up maken en terugzetten</li>
+                <li>Je kunt op elk moment gegevens verwijderen door ze in de app te wissen of de app te deïnstalleren</li>
+                <li>PAN-inloggegevens staan versleuteld in de systeemsleutelopslag van je toestel, niet in platte tekst</li>
+            </ul>
+        </section>
+
+        <section class="content-section reveal">
             <h2>Kinderen</h2>
             <p>Onze diensten zijn niet bedoeld voor gebruikers jonger dan 16 jaar. We verzamelen niet bewust gegevens van gebruikers onder deze leeftijd.</p>
         </section>
 
-        <section class="privacy-section">
-            <h2>Uw rechten</h2>
-            <p>U heeft de volgende rechten met betrekking tot uw gegevens:</p>
+        <section class="content-section reveal">
+            <h2>Jouw rechten</h2>
             <ul>
-                <li>Recht op inzage van uw gegevens (via de App)</li>
-                <li>Recht op verwijdering van uw gegevens (via de App)</li>
-                <li>Recht op het maken van een backup van uw gegevens (via de App)</li>
+                <li>Recht op inzage van je gegevens (via de app zelf, want die staan lokaal)</li>
+                <li>Recht op verwijdering van je gegevens (via de app of door deze te deïnstalleren)</li>
+                <li>Recht op het maken van een back-up van je gegevens (via de app)</li>
+                <li>Voor gegevens die je zelf naar PAN hebt verstuurd, gelden de rechten die PAN als verwerker biedt; neem hiervoor contact op met PAN</li>
             </ul>
         </section>
 
-        <section class="privacy-section">
+        <section class="content-section reveal">
             <h2>Wijzigingen</h2>
-            <p>Wij behouden ons het recht voor om wijzigingen aan te brengen in dit privacy beleid. Het is aan te raden om dit privacy beleid regelmatig te raadplegen.</p>
+            <p>We behouden ons het recht voor om wijzigingen aan te brengen in dit privacybeleid, bijvoorbeeld wanneer we nieuwe functies toevoegen die gegevens anders verwerken. Het is aan te raden dit beleid regelmatig te raadplegen.</p>
         </section>
 
-        <section class="privacy-section">
+        <section class="content-section reveal">
             <h2>Contact</h2>
-            <p>Voor vragen over dit privacy beleid of over de App kunt u contact opnemen via <a href="mailto:otorenbosch.developer@gmail.com">otorenbosch.developer@gmail.com</a>.</p>
+            <p>Voor vragen over dit privacybeleid of over de app kun je contact opnemen via <a href="mailto:otorenbosch.developer@gmail.com">otorenbosch.developer@gmail.com</a>.</p>
         </section>
 
-        <section class="privacy-section">
+        <section class="content-section reveal">
             <h2>Toestemming</h2>
-            <p>Door de App te gebruiken gaat u akkoord met dit privacy beleid.</p>
+            <p>Door de app te gebruiken ga je akkoord met dit privacybeleid.</p>
         </section>
 
-        <div class="privacy-footer">
-            <p class="last-updated">Dit privacy beleid is voor het laatst bijgewerkt op 24 november 2024</p>
-        </div>
+        <p class="last-updated">Dit privacybeleid is voor het laatst bijgewerkt op 5 augustus 2026.</p>
     </main>
+
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand">
+                    <img src="../images/icoon-zoekapp.png" alt="Zoekapp logo">
+                    Zoekapp
+                </div>
+                <p style="color: rgba(255,255,255,0.65); font-size: 0.95rem; max-width: 280px;">De app voor wie metaaldetectie serieus neemt: vondsten vastleggen, percelen beheren en rechtstreeks melden bij PAN.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Zoekapp</h3>
+                <ul>
+                    <li><a href="over-ons.html">Over ons</a></li>
+                    <li><a href="faq.html">Veelgestelde vragen</a></li>
+                    <li><a href="../documents/gebruikershandleiding.pdf" target="_blank">Gebruikershandleiding</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Meldpunten</h3>
+                <ul>
+                    <li><a href="https://www.portable-antiquities.nl/" target="_blank">PAN Database (gekoppeld)</a></li>
+                    <li><a href="https://muntvondsten.dnb.nl/#/" target="_blank">Numis</a></li>
+                    <li><a href="https://formulier.cultureelerfgoed.nl/archis/vondstmeldingsformulier" target="_blank">Archis (professionele archeologie)</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Ondersteuning</h3>
+                <ul>
+                    <li><a href="mailto:otorenbosch.developer@gmail.com">Contact</a></li>
+                    <li><a href="privacy.html">Privacybeleid</a></li>
+                    <li><a href="voorwaarden.html">Gebruiksvoorwaarden</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Zoekapp. Alle rechten voorbehouden.</p>
+            <p>Ontwikkeld voor de metaaldetectie-gemeenschap</p>
+        </div>
+    </footer>
+
+    <script src="../js/nav.js"></script>
+    <script src="../js/reveal.js"></script>
 </body>
 </html>
