@@ -193,12 +193,8 @@ h1, h2, h3, h4 {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 2.2rem;
+    gap: 1.6rem;
     list-style: none;
-}
-
-.nav-links-download {
-    display: none;
 }
 
 .nav-links a {
@@ -228,7 +224,7 @@ h1, h2, h3, h4 {
     cursor: pointer;
 }
 
-@media (max-width: 860px) {
+@media (max-width: 1200px) {
     .nav-links {
         position: fixed;
         top: 68px;
@@ -260,31 +256,8 @@ h1, h2, h3, h4 {
         padding: 0.9rem 0;
     }
 
-    .nav-links-download {
-        display: block;
-        border-top: none;
-        margin-top: 0.6rem;
-        padding-bottom: 0.6rem;
-    }
-
-    .nav-links-download a {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        padding: 0.85rem 0;
-        background: var(--primary);
-        color: var(--white);
-        border-radius: 50px;
-        font-weight: 600;
-    }
-
     .nav-toggle {
         display: block;
-    }
-
-    .nav-actions .btn-primary {
-        display: none;
     }
 }
 
