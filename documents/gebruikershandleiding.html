@@ -224,7 +224,7 @@
     <div class="eyebrow">Handleiding</div>
     <h1>Gebruikershandleiding<br>Zoekapp</h1>
     <p class="sub">Alles wat je moet weten over vondsten vastleggen, percelen beheren en rechtstreeks melden bij PAN.</p>
-    <div class="meta">Bijgewerkt: augustus 2026 &middot; www.zoek-app.nl</div>
+    <div class="meta">Bijgewerkt: september 2026 &middot; www.zoek-app.nl</div>
 </div>
 
 <div class="toc">
@@ -287,10 +287,13 @@
 
     <h3>Locatie vastleggen</h3>
     <ul>
-        <li>De locatie wordt automatisch bepaald door de GPS van je telefoon</li>
-        <li>Zoek op adres of pas de locatie handmatig aan</li>
+        <li>Op de akker volgt de pin automatisch je GPS-positie, zodat een vondst meteen op de juiste plek staat</li>
+        <li>Het label linksonder op de kaart toont hoe nauwkeurig de GPS is. Is het oranje, dan kun je beter zelf de plek aantikken; de app waarschuwt je ook voordat je opslaat met een onnauwkeurige GPS</li>
+        <li>Zoek op adres of tik op de kaart om de plek zelf aan te wijzen. Een kleine correctie op de akker geldt alleen voor die ene vondst; daarna volgt de pin je weer</li>
+        <li>Voer je thuis in en wijs je een plek ver bij je vandaan aan, dan blijft de pin na het opslaan staan, zodat je meerdere vondsten achter elkaar op dezelfde plek kunt invoeren</li>
         <li>Switch eventueel van kaartlaag om de locatie beter te kunnen zien</li>
-        <li>Gebruik de locatieknop om je locatie opnieuw op te halen</li>
+        <li>Gebruik de locatieknop om de pin weer je GPS-positie te laten volgen</li>
+        <li>De app vraagt alleen om je locatie terwijl je hem gebruikt, nooit op de achtergrond</li>
         <li>De kaart toont dezelfde informatieve lagen als de vondstenkaart: percelen (groen = met eigenaar, oranje = zonder eigenaar) en archeologische gebieden (paars = interessant, rood = beschermd), zodra je ver genoeg inzoomt (zie hoofdstuk 4 voor de volledige legenda)</li>
         <li>Klik je op een nog onbekend perceel, dan kun je kiezen tussen vondst invoeren of eerst het perceel vastleggen</li>
     </ul>
@@ -311,6 +314,15 @@
         <li>Het kadastrale perceel automatisch vastleggen</li>
         <li>Een eigenaar koppelen aan het perceel uit je contactenlijst</li>
         <li>Een nieuw contact aanmaken binnen de app</li>
+    </ul>
+
+    <h3>Perceel intekenen (o.a. buitenland)</h3>
+    <p>Waar het kadaster niets kent, zoals in Denemarken, teken je de akker zelf in:</p>
+    <ul>
+        <li>Tik de hoeken van de akker aan op de kaart</li>
+        <li>Maakte je een misser, gebruik dan <strong>Ongedaan</strong>; kies <strong>Klaar</strong> als de rand klopt</li>
+        <li>Geef het perceel een naam. Vondsten binnen de rand die nog geen perceel hebben, worden er automatisch aan gekoppeld</li>
+        <li>De rand kun je later nog aanpassen via het potloodje in het percelenoverzicht</li>
     </ul>
 
     <h3>Foto's toevoegen</h3>
@@ -359,12 +371,17 @@
     </ul>
 
     <h3>Back-up beheer</h3>
-    <p>Via het menu rechtsboven kun je:</p>
+    <p>Tik rechtsboven op het back-upicoon om je back-up te beheren.</p>
     <ul>
-        <li>Een back-up maken van je vondsten (inclusief foto's)</li>
-        <li>Een eerder gemaakte back-up terugzetten</li>
+        <li><strong>Automatische back-up:</strong> de app maakt één keer per dag een back-up in je eigen cloud, op de achtergrond, alleen via wifi en alleen als er iets veranderd is. Op de iPhone staat die in je eigen iCloud Drive, in de map &ldquo;Zoekapp&rdquo; (te zien in de Bestanden-app). Op Android kies je één keer zelf een map, op je telefoon of in je eigen Google Drive, en met &ldquo;Wijzigen&rdquo; kies je later een andere map</li>
+        <li><strong>Jouw gegevens:</strong> de back-up staat alleen op jouw eigen plek en gaat nooit naar de makers van de app. Er staat altijd één back-up: de nieuwste vervangt de vorige, maar pas als die compleet is</li>
+        <li><strong>Nu back-up maken:</strong> maakt direct een back-up, ook via mobiele data. Handig voordat je een ander toestel in gebruik neemt</li>
+        <li><strong>Melding na een week:</strong> is er een week lang geen back-up gelukt terwijl je wel iets hebt veranderd, dan meldt de app dat</li>
+        <li><strong>Laatste back-up terugzetten:</strong> zet je gegevens terug naar de stand van de laatste back-up. Alles wat je daarna hebt ingevoerd, is dan weg</li>
+        <li><strong>Veiligheidskopie:</strong> v&oacute;&oacute;r elke keer terugzetten bewaart de app eerst je huidige gegevens. Was het een vergissing, dan zet je de veiligheidskopie terug en ben je weer waar je was</li>
+        <li><strong>Ander back-upbestand kiezen</strong> en <strong>Back-up delen</strong>: zet een zelf opgeslagen back-up terug, bijvoorbeeld van een ander toestel, of maak een back-up en mail of bewaar die zelf</li>
     </ul>
-    <div class="note"><strong>Tip:</strong> maak regelmatig een back-up, zeker voor je de app bijwerkt of van toestel wisselt.</div>
+    <div class="note"><strong>Tip:</strong> zet de automatische back-up aan, dan hoef je er zelf niet meer aan te denken. Maak wel even een back-up voordat je van toestel wisselt.</div>
 </section>
 
 <section class="chapter">
@@ -374,6 +391,7 @@
     <h3>Overzicht en filteren</h3>
     <ul>
         <li>Alle percelen worden weergegeven met gemeente, sectie en nummer</li>
+        <li>Tik op het potloodje naast de naam om een perceel een eigen naam te geven, bijvoorbeeld &ldquo;Akker van Jansen&rdquo;. Die naam staat dan bovenaan, met de kadastrale aanduiding eronder</li>
         <li>Gebruik de zoekbalk om specifieke percelen te vinden</li>
         <li>Filter percelen op: alle percelen, met/zonder eigenaar, met/zonder vondsten, onderzocht/niet onderzocht</li>
         <li>Sorteer percelen op naam, aantal vondsten of laatste vondst</li>
