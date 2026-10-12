@@ -1,0 +1,17 @@
+# Zoekapp
+
+> Zoekapp (zoek-app.nl) is een gratis app voor iPhone en Android voor metaaldetectorzoekers in Nederland. Je legt vondsten vast op de kaart, beheert percelen en eigenaren en meldt vondsten rechtstreeks bij PAN (Portable Antiquities of the Netherlands, https://www.portable-antiquities.nl). Geen aankoop, geen abonnement. Vondsten en foto's blijven op je eigen telefoon.
+
+Belangrijkste functies: rechtstreeks melden bij PAN met foto's en locatie en de status van de melding volgen; interactieve kaart met vondsten, kadastrale percelen en archeologische aandachtsgebieden (PDOK/Kadaster en OpenStreetMap); perceelbeheer met eigen perceelnamen en eigenaargegevens; automatische dagelijkse back-up naar je eigen cloud (iCloud Drive of een zelfgekozen map op Android); eigen percelen intekenen in het buitenland, waar geen Nederlands kadaster is.
+
+## Downloaden
+- [App Store (iPhone)](https://apps.apple.com/nl/app/zoekapp-2-0/id6752777497)
+- [Google Play (Android)](https://play.google.com/store/apps/details?id=nl.zoekapp.vondsten)
+
+## Informatie
+- [Homepage](https://www.zoek-app.nl/): functies en werking in drie stappen
+- [Veelgestelde vragen](https://www.zoek-app.nl/pages/faq.html): melden bij PAN, back-ups, perceelbeheer en regelgeving
+- [Gebruikershandleiding](https://www.zoek-app.nl/documents/gebruikershandleiding.html)
+- [Over ons](https://www.zoek-app.nl/pages/over-ons.html)
+- [Privacybeleid](https://www.zoek-app.nl/pages/privacy.html)
+- [Gebruiksvoorwaarden](https://www.zoek-app.nl/pages/voorwaarden.html)
